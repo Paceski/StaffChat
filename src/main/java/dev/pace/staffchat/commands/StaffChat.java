@@ -14,7 +14,7 @@ public class StaffChat implements CommandExecutor {
         Player p = (Player) sender;
 
         if (!p.hasPermission("staff.staffchat")) {
-            p.sendMessage("§cYou are not allowed to execute this command. Contact server administrators if you believe this is an error.");
+            p.sendMessage("§cYou are not allowed to execute this command. Contact a server administrator if you believe this is an error.");
             return true;
         }
 
