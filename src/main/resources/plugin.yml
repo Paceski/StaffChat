@@ -1,0 +1,9 @@
+name: StaffChat
+version: ${project.version}
+main: dev.pace.staffchat.StaffChat
+api-version: 1.16
+commands:
+  staffchat:
+    description: Staff chat command.
+  sc:
+    description: Staff chat command.
