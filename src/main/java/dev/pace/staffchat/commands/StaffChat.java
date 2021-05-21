@@ -14,20 +14,20 @@ public class StaffChat implements CommandExecutor {
         Player p = (Player) sender;
 
         if (!p.hasPermission("staff.staffchat")) {
-            p.sendMessage("You are not allowed to execute this command.");
+            p.sendMessage("§cYou are not allowed to execute this command. Contact server administrators if you believe this is an error.");
             return true;
         }
 
         String message = String.join(" ", args);
 
         if (message.equals("")) {
-            p.sendMessage("Usage: /staffchat <message>");
+            p.sendMessage("§cUsage:§7 /staffchat <message>");
             return true;
         }
 
         for (Player staff : Bukkit.getOnlinePlayers()) {
             if (staff.hasPermission("staff.staffchat")) {
-                staff.sendMessage("StaffChat >" + p.getName() + " :" + message);
+                staff.sendMessage("§e§lStaffChat§7§l》" + p.getName() + ": " + message);
             }
         }
         return false;

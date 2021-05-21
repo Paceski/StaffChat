@@ -1,6 +1,6 @@
 name: StaffChat
 version: ${project.version}
-main: dev.pace.staffchat.StaffChat
+main: dev.pace.staffchat.Main
 api-version: 1.16
 commands:
   staffchat:
