@@ -25,7 +25,7 @@ public class StaffChatToggle implements CommandExecutor {
 
         boolean isEnabled = Main.getInstance().toggledSC.get(player.getUniqueId());
         boolean previousValue = Main.getInstance().toggledSC.put(player.getUniqueId(), !isEnabled);
-        player.sendMessage(!previousValue ? "§3You have toggled staff chat §aon§3!": "§3You have toggled staff chat §coff§3!");
+        player.sendMessage(previousValue ? "§3You have toggled staff chat §aon§3!": "§3You have toggled staff chat §coff§3!");
         return true;
     }
 }
