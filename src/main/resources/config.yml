@@ -3,3 +3,4 @@ staffchat:
   toggle-on: "§3You have toggled staff chat §aon§3!"
   toggle-off: "§3You have toggled staff chat §coff§3!"
   header: "§e§lStaffChat§7§l》"
+  # MAKE SURE YOU USE § AND NOT &.
