@@ -15,7 +15,7 @@ public class StaffChat implements CommandExecutor {
         Player p = (Player) sender;
 
         Main.getInstance().toggledSC.putIfAbsent(p.getUniqueId(), true);
-        if (!p.hasPermission("staff.staffchat")) {
+        if (!p.hasPermission("staff.staffchat")||!p.isOp()) {
             // :thumb:
             p.sendMessage(Main.config.getString("staffchat.error"));
             return true;

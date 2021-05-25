@@ -14,7 +14,7 @@ public class StaffChatToggle implements CommandExecutor {
         if(!(commandSender instanceof Player)) return false;
         Player player = (Player) commandSender;
         // Perm check
-        if(!player.hasPermission("staff.staffchat")) {
+        if(!player.hasPermission("staff.staffchat")||!player.isOp()) {
             player.sendMessage(Main.config.getString("staffchat.error"));
             return true;
         }
