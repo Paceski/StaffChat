@@ -2,6 +2,7 @@ package dev.pace.staffchat.commands;
 
 import dev.pace.staffchat.Main;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -17,7 +18,7 @@ public class StaffChat implements CommandExecutor {
         Main.getInstance().toggledSC.putIfAbsent(p.getUniqueId(), true);
         if (!p.hasPermission("staff.staffchat")||!p.isOp()) {
             // :thumb:
-            p.sendMessage(Main.config.getString("staffchat.error"));
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&',Main.config.getString("staffchat.error")));
             return true;
         }
 
@@ -28,7 +29,7 @@ public class StaffChat implements CommandExecutor {
             return true;
         }
 
-        if(Main.getInstance().toggledSC.get(p.getUniqueId())) {
+        if(!Main.getInstance().toggledSC.get(p.getUniqueId())) {
             p.sendMessage("Do /sctoggle to talk in staff chat!");
             return true;
         }
@@ -39,7 +40,7 @@ public class StaffChat implements CommandExecutor {
                 Main.getInstance().toggledSC.putIfAbsent(staff.getUniqueId(), true);
                 // if its enabled then there u go.
                 if(Main.getInstance().toggledSC.get(staff.getUniqueId())) {
-                    staff.sendMessage(Main.config.getString("staffchat.header") + p.getName() + ": " + message);
+                    staff.sendMessage(ChatColor.translateAlternateColorCodes('&',Main.config.getString("staffchat.header")) + p.getName() + ": " + message);
                 }
             }
         }

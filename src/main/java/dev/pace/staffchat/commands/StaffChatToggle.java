@@ -1,6 +1,7 @@
 package dev.pace.staffchat.commands;
 
 import dev.pace.staffchat.Main;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -14,7 +15,7 @@ public class StaffChatToggle implements CommandExecutor {
         Player player = (Player) commandSender;
         // Perm check
         if(!player.hasPermission("staff.staffchat")||!player.isOp()) {
-            player.sendMessage(Main.config.getString("staffchat.error"));
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&',Main.config.getString("staffchat.error")));
             return true;
         }
 
@@ -24,7 +25,7 @@ public class StaffChatToggle implements CommandExecutor {
 
         boolean isEnabled = Main.getInstance().toggledSC.get(player.getUniqueId());
         boolean previousValue = Main.getInstance().toggledSC.put(player.getUniqueId(), !isEnabled);
-        player.sendMessage(!previousValue ? Main.config.getString("staffchat.toggle-on"): Main.config.getString("staffchat.toggle-off"));
+        player.sendMessage(!previousValue ? ChatColor.translateAlternateColorCodes('&',Main.config.getString("staffchat.toggle-on")): ChatColor.translateAlternateColorCodes('&',Main.config.getString("staffchat.toggle-off")));
         return true;
     }
 }
