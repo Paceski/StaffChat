@@ -26,6 +26,7 @@ public final class Main extends JavaPlugin {
         Main.instance = this;
         Main.config = this.getConfig();
         Main.config.options().copyDefaults(true);
+        this.saveConfig();
         getCommand("staffchat").setExecutor(new StaffChat());
         getCommand("sc").setExecutor(new StaffChat());
         getCommand("sctoggle").setExecutor(new StaffChatToggle());
