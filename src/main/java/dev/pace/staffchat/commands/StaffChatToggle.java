@@ -15,7 +15,7 @@ public class StaffChatToggle implements CommandExecutor {
         Player player = (Player) commandSender;
         // Perm check
         if(!player.hasPermission("staff.staffchat")) {
-            player.sendMessage("§cYou are not allowed to execute this command. Contact a server administrator if you believe this is an error.");
+            player.sendMessage(Main.config.getString("staffchat.error"));
             return true;
         }
 
@@ -25,7 +25,7 @@ public class StaffChatToggle implements CommandExecutor {
 
         boolean isEnabled = Main.getInstance().toggledSC.get(player.getUniqueId());
         boolean previousValue = Main.getInstance().toggledSC.put(player.getUniqueId(), !isEnabled);
-        player.sendMessage(previousValue ? "§3You have toggled staff chat §aon§3!": "§3You have toggled staff chat §coff§3!");
+        player.sendMessage(previousValue ? Main.config.getString("staffchat.toggle-on"): Main.config.getString("staffchat.toggle-off"));
         return true;
     }
 }

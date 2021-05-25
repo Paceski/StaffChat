@@ -17,7 +17,7 @@ public class StaffChat implements CommandExecutor {
         Main.getInstance().toggledSC.putIfAbsent(p.getUniqueId(), true);
         if (!p.hasPermission("staff.staffchat")) {
             // :thumb:
-            p.sendMessage("§cYou are not allowed to execute this command. Contact a server administrator if you believe this is an error.");
+            p.sendMessage(Main.config.getString("staffchat.error"));
             return true;
         }
 
@@ -39,7 +39,7 @@ public class StaffChat implements CommandExecutor {
                 Main.getInstance().toggledSC.putIfAbsent(staff.getUniqueId(), true);
                 // if its enabled then there u go.
                 if(Main.getInstance().toggledSC.get(staff.getUniqueId())) {
-                    staff.sendMessage("§e§lStaffChat§7§l》" + p.getName() + ": " + message);
+                    staff.sendMessage(Main.config.getString("staffchat.header") + p.getName() + ": " + message);
                 }
             }
         }
