@@ -11,3 +11,5 @@ commands:
     description: Toggle messages from staff chat.
     aliases:
       - staffchattoggle
+  screload:
+    description: Reloads config.
