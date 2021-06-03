@@ -16,8 +16,8 @@ public class StaffChat implements CommandExecutor {
         Player p = (Player) sender;
 
         Main.getInstance().toggledSC.putIfAbsent(p.getUniqueId(), true);
-        if (!p.hasPermission("staff.staffchat")||!p.isOp()) {
-            // Permission.
+        if (p.hasPermission("staff.staffchat") || p.isOp()) {
+        }else{
             p.sendMessage(ChatColor.translateAlternateColorCodes('&',Main.config.getString("staffchat.error")));
             return true;
         }
@@ -35,16 +35,12 @@ public class StaffChat implements CommandExecutor {
         }
         for (Player staff : Bukkit.getOnlinePlayers()) {
             if (staff.hasPermission("staff.staffchat")) {
-
-                // Add if absent.
                 Main.getInstance().toggledSC.putIfAbsent(staff.getUniqueId(), true);
-                // If it's enabled, then there you go.
                 if(Main.getInstance().toggledSC.get(staff.getUniqueId())) {
                     staff.sendMessage(ChatColor.translateAlternateColorCodes('&',Main.config.getString("staffchat.header")) + p.getName() + ": " + message);
                 }
             }
         }
         return false;
-
     }
 }

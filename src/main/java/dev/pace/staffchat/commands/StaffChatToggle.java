@@ -13,14 +13,11 @@ public class StaffChatToggle implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if(!(commandSender instanceof Player)) return false;
         Player player = (Player) commandSender;
-        // Perm check.
         if(!player.hasPermission("staff.staffchat")||!player.isOp()) {
             player.sendMessage(ChatColor.translateAlternateColorCodes('&',Main.config.getString("staffchat.error")));
             return true;
         }
 
-        // Main execution.
-        // Put Player into the map if they don't exist.
         Main.getInstance().toggledSC.putIfAbsent(player.getUniqueId(), true);
 
         boolean isEnabled = Main.getInstance().toggledSC.get(player.getUniqueId());
