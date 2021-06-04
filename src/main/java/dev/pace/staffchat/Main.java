@@ -1,9 +1,7 @@
 package dev.pace.staffchat;
 
 import com.google.common.collect.Maps;
-import dev.pace.staffchat.commands.StaffChat;
-import dev.pace.staffchat.commands.StaffChatReload;
-import dev.pace.staffchat.commands.StaffChatToggle;
+import dev.pace.staffchat.commands.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -16,6 +14,7 @@ public final class Main extends JavaPlugin {
     public static FileConfiguration config;
 
     public Map<UUID, Boolean> toggledSC = Maps.newConcurrentMap();
+    public Map<UUID, Boolean> toggledAC = Maps.newConcurrentMap();
 
     public synchronized static Main getInstance(){
         if(instance == null) instance = new Main();
@@ -37,6 +36,9 @@ public final class Main extends JavaPlugin {
         getCommand("staffchat").setExecutor(new StaffChat());
         getCommand("sc").setExecutor(new StaffChat());
         getCommand("sctoggle").setExecutor(new StaffChatToggle());
+        getCommand("adminchat").setExecutor(new AdminChat());
+        getCommand("ac").setExecutor(new AdminChat());
+        getCommand("actoggle").setExecutor(new AdminChatToggle());
     }
 
     @Override

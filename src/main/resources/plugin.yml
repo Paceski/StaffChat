@@ -13,3 +13,11 @@ commands:
       - staffchattoggle
   screload:
     description: Reloads config.
+  adminchat:
+    description: Admin chat command.
+    aliases:
+      - ac
+  adminchattoggle:
+    description: Toggle messages from admin chat.
+    aliases:
+      - actoggle
