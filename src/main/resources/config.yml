@@ -1,12 +1,11 @@
-# You may use unicode characters if you'd like. If you are. Please add -Dfile.encoding=UTF-8 to your start up script to ensure it saves properly
+# You may use unicode characters if you'd like. If you are. Please add -Dfile.encoding=UTF-8 to your start up script to ensure it saves properly.
+# IMPORTANT || Make it false if you do not want adminchat enabled and then do /screload ||  IMPORTANT
 staffchat:
   error: "&cYou are not allowed to execute this command. Contact a server administrator if you believe this is an error."
   toggle-on: "&3You have toggled staff chat &aon&3!"
   toggle-off: "&3You have toggled staff chat &coff&3!"
   header: "&e&lStaffChat&7&l》"
 adminchat:
-# Make it false if you do not want adminchat enabled and then reboot the server.
-  enabled: true
   error: "&cYou are not allowed to execute this command. Contact a server administrator if you believe this is an error."
   toggle-on: "&3You have toggled admin chat &aon&3!"
   toggle-off: "&3You have toggled admin chat &coff&3!"

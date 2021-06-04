@@ -16,6 +16,8 @@ commands:
   adminchat:
     description: Admin chat command.
     aliases:
+      - asc
+      - adminstaffchat
       - ac
   adminchattoggle:
     description: Toggle messages from admin chat.

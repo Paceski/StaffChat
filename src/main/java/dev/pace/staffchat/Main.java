@@ -2,6 +2,7 @@ package dev.pace.staffchat;
 
 import com.google.common.collect.Maps;
 import dev.pace.staffchat.commands.*;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -31,14 +32,18 @@ public final class Main extends JavaPlugin {
         Main.instance = this;
         Main.config = this.getConfig();
         Main.config.options().copyDefaults(true);
+        config.addDefault("adminchat-enabled", true);
         this.saveConfig();
         getCommand("screload").setExecutor(new StaffChatReload());
         getCommand("staffchat").setExecutor(new StaffChat());
         getCommand("sc").setExecutor(new StaffChat());
         getCommand("sctoggle").setExecutor(new StaffChatToggle());
         getCommand("adminchat").setExecutor(new AdminChat());
+        getCommand("asc").setExecutor(new AdminChat());
         getCommand("ac").setExecutor(new AdminChat());
+        getCommand("adminstaffchat").setExecutor(new AdminChat());
         getCommand("actoggle").setExecutor(new AdminChatToggle());
+        getCommand("adminchattoggle").setExecutor(new AdminChatToggle());
     }
 
     @Override
