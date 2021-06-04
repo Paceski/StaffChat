@@ -23,3 +23,7 @@ commands:
     description: Toggle messages from admin chat.
     aliases:
       - actoggle
+  schelp:
+    description: Shows all staff chat commands.
+    aliases:
+      - staffchathelp

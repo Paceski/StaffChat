@@ -2,7 +2,7 @@ package dev.pace.staffchat;
 
 import com.google.common.collect.Maps;
 import dev.pace.staffchat.commands.*;
-import org.bukkit.Bukkit;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -44,6 +44,8 @@ public final class Main extends JavaPlugin {
         getCommand("adminstaffchat").setExecutor(new AdminChat());
         getCommand("actoggle").setExecutor(new AdminChatToggle());
         getCommand("adminchattoggle").setExecutor(new AdminChatToggle());
+        getCommand("schelp").setExecutor(new StaffChatHelp(this));
+        getCommand("staffchathelp").setExecutor(new StaffChatHelp(this));
     }
 
     @Override
