@@ -6,10 +6,15 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
 import java.util.ArrayList;
 
+/**
+ * Created by Pace
+ * No part of this publication may be reproduced, disturbed, or transmitted in any form or any means.
+ */
+
 public class StaffChatHelp implements CommandExecutor {
+
     private ArrayList<String> about;
     private final Main plugin;
 
@@ -33,7 +38,7 @@ public class StaffChatHelp implements CommandExecutor {
             p.sendMessage(this.cc("&eStaff Chat Help - Current Version: 0.8 - by Pace#0001"));
             p.sendMessage(this.cc("&6--------------------------------------"));
             p.sendMessage(this.cc("&6/sc <message> - &eTalk in staff chat."));
-            p.sendMessage(this.cc("&6/sctoggle- &eEnable or Disable the Staff Chat"));
+            p.sendMessage(this.cc("&6/sctoggle- &eEnable or Disable the Staff Chat."));
             p.sendMessage(this.cc("&6/screload - &eReloads plugin configuration."));
             p.sendMessage(this.cc("&6/adminchat <message> - &eTalk in admin chat."));
             p.sendMessage(this.cc("&6/adminchattoggle- &eEnable or Disable the Admin Chat"));

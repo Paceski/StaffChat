@@ -7,7 +7,13 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+/**
+ * Created by Pace
+ * No part of this publication may be reproduced, disturbed, or transmitted in any form or any means.
+ */
+
 public class StaffChatReload implements CommandExecutor {
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Player p = (Player) sender;

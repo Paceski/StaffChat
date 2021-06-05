@@ -2,12 +2,16 @@ package dev.pace.staffchat;
 
 import com.google.common.collect.Maps;
 import dev.pace.staffchat.commands.*;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Map;
 import java.util.UUID;
+
+/**
+ * Created by Pace
+ * No part of this publication may be reproduced, disturbed, or transmitted in any form or any means.
+ */
 
 public final class Main extends JavaPlugin {
 

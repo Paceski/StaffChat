@@ -7,6 +7,11 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+/**
+ * Created by Pace
+ * No part of this publication may be reproduced, disturbed, or transmitted in any form or any means.
+ */
+
 public class StaffChatToggle implements CommandExecutor {
 
     @Override
