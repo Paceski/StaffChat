@@ -2,11 +2,13 @@ package dev.pace.staffchat;
 
 import com.google.common.collect.Maps;
 import dev.pace.staffchat.commands.*;
+import dev.pace.staffchat.updatechecker.UpdateChecker;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Map;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 /**
  * Created by Pace
@@ -38,6 +40,7 @@ public final class Main extends JavaPlugin {
         Main.config.options().copyDefaults(true);
         config.addDefault("adminchat-enabled", true);
         this.saveConfig();
+        Logger logger = this.getLogger();
         getCommand("screload").setExecutor(new StaffChatReload());
         getCommand("staffchat").setExecutor(new StaffChat());
         getCommand("sc").setExecutor(new StaffChat());
@@ -50,6 +53,14 @@ public final class Main extends JavaPlugin {
         getCommand("adminchattoggle").setExecutor(new AdminChatToggle());
         getCommand("schelp").setExecutor(new StaffChatHelp(this));
         getCommand("staffchathelp").setExecutor(new StaffChatHelp(this));
+
+        new UpdateChecker(this, 92585).getVersion(version -> {
+            if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
+                logger.info("Staff Chat is up-to-date!");
+            } else {
+                logger.info("There is a new update available for Staff Chat. https://www.spigotmc.org/resources/staff-chat.92585/");
+            }
+        });
     }
 
     @Override
