@@ -21,10 +21,10 @@ public class AdminChat implements CommandExecutor {
         Player p = (Player) sender;
 
         Main.getInstance().toggledAC.putIfAbsent(p.getUniqueId(), true);
-        if(!Main.config.getBoolean("adminchat-enabled")) return false;
+        if (!Main.config.getBoolean("adminchat-enabled")) return false;
         if (p.hasPermission("staff.adminchat") || p.isOp()) {
-        }else{
-            p.sendMessage(ChatColor.translateAlternateColorCodes('&',Main.config.getString("adminchat.error")));
+        } else {
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&', Main.config.getString("adminchat.error")));
             return true;
         }
 
@@ -35,15 +35,15 @@ public class AdminChat implements CommandExecutor {
             return true;
         }
 
-        if(!Main.getInstance().toggledAC.get(p.getUniqueId())) {
+        if (!Main.getInstance().toggledAC.get(p.getUniqueId())) {
             p.sendMessage("Do /adminchattoggle to talk in staff chat!");
             return true;
         }
         for (Player staff : Bukkit.getOnlinePlayers()) {
-                if (staff.hasPermission("staff.adminchat")) {
+            if (staff.hasPermission("staff.adminchat")) {
                 Main.getInstance().toggledAC.putIfAbsent(staff.getUniqueId(), true);
-                if(Main.getInstance().toggledAC.get(staff.getUniqueId())) {
-                    staff.sendMessage(ChatColor.translateAlternateColorCodes('&',Main.config.getString("adminchat.header")) + p.getName() + ": " + message);
+                if (Main.getInstance().toggledAC.get(staff.getUniqueId())) {
+                    staff.sendMessage(ChatColor.translateAlternateColorCodes('&', Main.config.getString("adminchat.header")) + p.getName() + ": " + message);
                 }
             }
         }

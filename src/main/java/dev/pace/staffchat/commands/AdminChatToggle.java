@@ -16,9 +16,9 @@ public class AdminChatToggle implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        if(!(commandSender instanceof Player)) return false;
+        if (!(commandSender instanceof Player)) return false;
         Player player = (Player) commandSender;
-        if(!player.hasPermission("staff.adminchat")||!player.isOp()) {
+        if (!player.hasPermission("staff.adminchat") || !player.isOp()) {
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', Main.config.getString("adminchat.error")));
             return true;
         }
@@ -27,7 +27,7 @@ public class AdminChatToggle implements CommandExecutor {
 
         boolean isEnabled = Main.getInstance().toggledAC.get(player.getUniqueId());
         boolean previousValue = Main.getInstance().toggledAC.put(player.getUniqueId(), !isEnabled);
-        player.sendMessage(!previousValue ? ChatColor.translateAlternateColorCodes('&',Main.config.getString("adminchat.toggle-on")): ChatColor.translateAlternateColorCodes('&',Main.config.getString("adminchat.toggle-off")));
+        player.sendMessage(!previousValue ? ChatColor.translateAlternateColorCodes('&', Main.config.getString("adminchat.toggle-on")) : ChatColor.translateAlternateColorCodes('&', Main.config.getString("adminchat.toggle-off")));
         return true;
     }
 }

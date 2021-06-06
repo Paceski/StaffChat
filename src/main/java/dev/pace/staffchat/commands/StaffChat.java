@@ -22,8 +22,8 @@ public class StaffChat implements CommandExecutor {
 
         Main.getInstance().toggledSC.putIfAbsent(p.getUniqueId(), true);
         if (p.hasPermission("staff.staffchat") || p.isOp()) {
-        }else{
-            p.sendMessage(ChatColor.translateAlternateColorCodes('&',Main.config.getString("staffchat.error")));
+        } else {
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&', Main.config.getString("staffchat.error")));
             return true;
         }
 
@@ -34,15 +34,15 @@ public class StaffChat implements CommandExecutor {
             return true;
         }
 
-        if(!Main.getInstance().toggledSC.get(p.getUniqueId())) {
+        if (!Main.getInstance().toggledSC.get(p.getUniqueId())) {
             p.sendMessage("Do /sctoggle to talk in staff chat!");
             return true;
         }
         for (Player staff : Bukkit.getOnlinePlayers()) {
             if (staff.hasPermission("staff.staffchat")) {
                 Main.getInstance().toggledSC.putIfAbsent(staff.getUniqueId(), true);
-                if(Main.getInstance().toggledSC.get(staff.getUniqueId())) {
-                    staff.sendMessage(ChatColor.translateAlternateColorCodes('&',Main.config.getString("staffchat.header")) + p.getName() + ": " + message);
+                if (Main.getInstance().toggledSC.get(staff.getUniqueId())) {
+                    staff.sendMessage(ChatColor.translateAlternateColorCodes('&', Main.config.getString("staffchat.header")) + p.getName() + ": " + message);
                 }
             }
         }

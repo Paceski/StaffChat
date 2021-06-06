@@ -1,5 +1,6 @@
 # You may use unicode characters if you'd like. If you are. Please add -Dfile.encoding=UTF-8 to your start up script to ensure it saves properly.
 # IMPORTANT || Make it false if you do not want adminchat enabled and then do /screload ||  IMPORTANT
+# Update checker is still in beta so there may be some bugs with it, if you encounter any please create a conversation on my spigot.
 staffchat:
   error: "&cYou are not allowed to execute this command. Contact a server administrator if you believe this is an error."
   toggle-on: "&3You have toggled staff chat &aon&3!"
