@@ -39,6 +39,7 @@ public final class Main extends JavaPlugin {
         Main.config = this.getConfig();
         Main.config.options().copyDefaults(true);
         config.addDefault("adminchat-enabled", true);
+        config.addDefault("update-checker", true);
         this.saveConfig();
         Logger logger = this.getLogger();
         getCommand("screload").setExecutor(new StaffChatReload());
@@ -55,6 +56,7 @@ public final class Main extends JavaPlugin {
         getCommand("staffchathelp").setExecutor(new StaffChatHelp(this));
 
         new UpdateChecker(this, 92585).getVersion(version -> {
+            if(!Main.config.getBoolean("update-checker")) return;
             if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
                 logger.info("Staff Chat is up-to-date!");
             } else {
