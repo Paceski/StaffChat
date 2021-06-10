@@ -18,16 +18,17 @@ public class StaffChatToggle implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (!(commandSender instanceof Player)) return false;
         Player player = (Player) commandSender;
+        Main main = Main.getInstance();
         if (!player.hasPermission("staff.staffchat") || !player.isOp()) {
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', Main.config.getString("staffchat.error")));
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', main.config.getString("staffchat.error")));
             return true;
         }
 
-        Main.getInstance().toggledSC.putIfAbsent(player.getUniqueId(), true);
+        main.toggledSC.putIfAbsent(player.getUniqueId(), true);
 
-        boolean isEnabled = Main.getInstance().toggledSC.get(player.getUniqueId());
-        boolean previousValue = Main.getInstance().toggledSC.put(player.getUniqueId(), !isEnabled);
-        player.sendMessage(!previousValue ? ChatColor.translateAlternateColorCodes('&', Main.config.getString("staffchat.toggle-on")) : ChatColor.translateAlternateColorCodes('&', Main.config.getString("staffchat.toggle-off")));
+        boolean isEnabled = main.toggledSC.get(player.getUniqueId());
+        boolean previousValue = main.toggledSC.put(player.getUniqueId(), !isEnabled);
+        player.sendMessage(!previousValue ? ChatColor.translateAlternateColorCodes('&', main.config.getString("staffchat.toggle-on")) : ChatColor.translateAlternateColorCodes('&', main.config.getString("staffchat.toggle-off")));
         return true;
     }
 }

@@ -19,12 +19,12 @@ public class AdminChat implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         Player p = (Player) sender;
-
-        Main.getInstance().toggledAC.putIfAbsent(p.getUniqueId(), true);
-        if (!Main.config.getBoolean("adminchat-enabled")) return false;
+        Main main = Main.getInstance();
+        main.toggledAC.putIfAbsent(p.getUniqueId(), true);
+        if (!main.config.getBoolean("adminchat-enabled")) return false;
         if (p.hasPermission("staff.adminchat") || p.isOp()) {
         } else {
-            p.sendMessage(ChatColor.translateAlternateColorCodes('&', Main.config.getString("adminchat.error")));
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&', main.config.getString("adminchat.error")));
             return true;
         }
 
@@ -43,7 +43,7 @@ public class AdminChat implements CommandExecutor {
             if (staff.hasPermission("staff.adminchat")) {
                 Main.getInstance().toggledAC.putIfAbsent(staff.getUniqueId(), true);
                 if (Main.getInstance().toggledAC.get(staff.getUniqueId())) {
-                    staff.sendMessage(ChatColor.translateAlternateColorCodes('&', Main.config.getString("adminchat.header")) + p.getName() + ": " + message);
+                    staff.sendMessage(ChatColor.translateAlternateColorCodes('&', main.config.getString("adminchat.header")) + p.getName() + ": " + message);
                 }
             }
         }

@@ -19,11 +19,11 @@ public class StaffChat implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         Player p = (Player) sender;
-
-        Main.getInstance().toggledSC.putIfAbsent(p.getUniqueId(), true);
+        Main main = Main.getInstance();
+        main.toggledSC.putIfAbsent(p.getUniqueId(), true);
         if (p.hasPermission("staff.staffchat") || p.isOp()) {
         } else {
-            p.sendMessage(ChatColor.translateAlternateColorCodes('&', Main.config.getString("staffchat.error")));
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&',main.config.getString("staffchat.error")));
             return true;
         }
 
@@ -42,10 +42,11 @@ public class StaffChat implements CommandExecutor {
             if (staff.hasPermission("staff.staffchat")) {
                 Main.getInstance().toggledSC.putIfAbsent(staff.getUniqueId(), true);
                 if (Main.getInstance().toggledSC.get(staff.getUniqueId())) {
-                    staff.sendMessage(ChatColor.translateAlternateColorCodes('&', Main.config.getString("staffchat.header")) + p.getName() + ": " + message);
+                    staff.sendMessage(ChatColor.translateAlternateColorCodes('&', main.config.getString("staffchat.header")) + p.getName() + ": " + message);
                 }
             }
         }
         return false;
     }
+
 }
