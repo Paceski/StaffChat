@@ -8,6 +8,11 @@ import java.net.URL;
 import java.util.Scanner;
 import java.util.function.Consumer;
 
+/**
+ * Created by Pace
+ * No part of this publication may be reproduced, disturbed, or transmitted in any form or any means.
+ */
+
 public class UpdateChecker {
 
     private final JavaPlugin plugin;

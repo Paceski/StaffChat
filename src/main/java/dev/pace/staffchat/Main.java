@@ -2,6 +2,7 @@ package dev.pace.staffchat;
 
 import com.google.common.collect.Maps;
 import dev.pace.staffchat.commands.*;
+import dev.pace.staffchat.metrics.Metrics;
 import dev.pace.staffchat.updatechecker.UpdateChecker;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -41,15 +42,13 @@ public final class Main extends JavaPlugin {
         config.addDefault("update-checker", false);
         this.saveConfig();
         Logger logger = this.getLogger();
+        int pluginId = 11633;
+        Metrics metrics = new Metrics(this, 11633);
         getCommand("screload").setExecutor(new StaffChatReload());
         getCommand("staffchat").setExecutor(new StaffChat());
         getCommand("sc").setExecutor(new StaffChat());
         getCommand("sctoggle").setExecutor(new StaffChatToggle());
         if (config.getBoolean("adminchat-enabled")){
-            //getCommand("adminchat").setExecutor(new AdminChat());
-            //getCommand("asc").setExecutor(new AdminChat());
-            //getCommand("ac").setExecutor(new AdminChat()); -> consuming ~4 memory
-            //getCommand("adminstaffchat").setExecutor(new AdminChat());
             getCommand("adminchat").setExecutor(new AdminChat()); // aliases: asc ac adminstaffchat
             getCommand("actoggle").setExecutor(new AdminChatToggle());
             getCommand("adminchattoggle").setExecutor(new AdminChatToggle());
@@ -62,14 +61,13 @@ public final class Main extends JavaPlugin {
             if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
                 logger.info("Staff Chat is up-to-date!");
             } else {
-                logger.info("There is a new update available for Staff Chat. https://www.spigotmc.org/resources/staff-chat.92585/");
+                logger.info("There is a new update available for Staff Chat. Download it here: https://www.spigotmc.org/resources/staff-chat.92585/");
             }
         });
     }
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
     }
 
 }
