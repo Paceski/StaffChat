@@ -18,26 +18,25 @@ import java.util.logging.Logger;
 public final class Main extends JavaPlugin {
 
     public static Main instance = null;
-    public static FileConfiguration config;
+    public FileConfiguration config;
 
     public Map<UUID, Boolean> toggledSC = Maps.newConcurrentMap();
     public Map<UUID, Boolean> toggledAC = Maps.newConcurrentMap();
 
-    public synchronized static Main getInstance() {
-        if (instance == null) instance = new Main();
+    public static Main getInstance() {
         return instance;
     }
 
     public void reloadConfiguration() {
         this.reloadConfig();
-        Main.config = this.getConfig();
+        config = this.getConfig();
     }
 
     @Override
     public void onEnable() {
         Main.instance = this;
-        Main.config = this.getConfig();
-        Main.config.options().copyDefaults(true);
+        config = this.getConfig();
+        config.options().copyDefaults(true);
         config.addDefault("adminchat-enabled", true);
         config.addDefault("update-checker", false);
         this.saveConfig();
@@ -46,17 +45,20 @@ public final class Main extends JavaPlugin {
         getCommand("staffchat").setExecutor(new StaffChat());
         getCommand("sc").setExecutor(new StaffChat());
         getCommand("sctoggle").setExecutor(new StaffChatToggle());
-        getCommand("adminchat").setExecutor(new AdminChat());
-        getCommand("asc").setExecutor(new AdminChat());
-        getCommand("ac").setExecutor(new AdminChat());
-        getCommand("adminstaffchat").setExecutor(new AdminChat());
-        getCommand("actoggle").setExecutor(new AdminChatToggle());
-        getCommand("adminchattoggle").setExecutor(new AdminChatToggle());
+        if (config.getBoolean("adminchat-enabled")){
+            //getCommand("adminchat").setExecutor(new AdminChat());
+            //getCommand("asc").setExecutor(new AdminChat());
+            //getCommand("ac").setExecutor(new AdminChat()); -> consuming ~4 memory
+            //getCommand("adminstaffchat").setExecutor(new AdminChat());
+            getCommand("adminchat").setExecutor(new AdminChat()); // aliases: asc ac adminstaffchat
+            getCommand("actoggle").setExecutor(new AdminChatToggle());
+            getCommand("adminchattoggle").setExecutor(new AdminChatToggle());
+        }
         getCommand("schelp").setExecutor(new StaffChatHelp(this));
         getCommand("staffchathelp").setExecutor(new StaffChatHelp(this));
 
         new UpdateChecker(this, 92585).getVersion(version -> {
-            if (!Main.config.getBoolean("update-checker")) return;
+            if (!config.getBoolean("update-checker")) return;
             if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
                 logger.info("Staff Chat is up-to-date!");
             } else {
@@ -69,4 +71,5 @@ public final class Main extends JavaPlugin {
     public void onDisable() {
         // Plugin shutdown logic
     }
+
 }

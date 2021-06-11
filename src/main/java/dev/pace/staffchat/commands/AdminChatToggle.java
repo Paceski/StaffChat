@@ -7,6 +7,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.UUID;
+
 /**
  * Created by Pace
  * No part of this publication may be reproduced, disturbed, or transmitted in any form or any means.
@@ -18,16 +20,17 @@ public class AdminChatToggle implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (!(commandSender instanceof Player)) return false;
         Player player = (Player) commandSender;
+        Main main = Main.getInstance();
+        if (main == null) return true;
         if (!player.hasPermission("staff.adminchat") || !player.isOp()) {
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', Main.config.getString("adminchat.error")));
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', main.config.getString("adminchat.error")));
             return true;
         }
-
-        Main.getInstance().toggledAC.putIfAbsent(player.getUniqueId(), true);
-
-        boolean isEnabled = Main.getInstance().toggledAC.get(player.getUniqueId());
-        boolean previousValue = Main.getInstance().toggledAC.put(player.getUniqueId(), !isEnabled);
-        player.sendMessage(!previousValue ? ChatColor.translateAlternateColorCodes('&', Main.config.getString("adminchat.toggle-on")) : ChatColor.translateAlternateColorCodes('&', Main.config.getString("adminchat.toggle-off")));
+        UUID uuid = player.getUniqueId();
+        boolean isEnabled = Main.getInstance().toggledAC.get(player.getUniqueId());        
+        Main.getInstance().toggledAC.put(player.getUniqueId(), !isEnabled); // if it was disabled, this is true,
+        player.sendMessage(!isEnabled ? ChatColor.translateAlternateColorCodes('&', main.config.getString("adminchat.toggle-on")) : ChatColor.translateAlternateColorCodes('&', main.config.getString("adminchat.toggle-off")));
         return true;
     }
+
 }
