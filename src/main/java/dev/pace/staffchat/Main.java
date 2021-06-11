@@ -45,12 +45,15 @@ public final class Main extends JavaPlugin {
         getCommand("staffchat").setExecutor(new StaffChat());
         getCommand("sc").setExecutor(new StaffChat());
         getCommand("sctoggle").setExecutor(new StaffChatToggle());
-        getCommand("adminchat").setExecutor(new AdminChat());
-        if (config.getBoolean("adminchat-enabled")) getCommand("asc").setExecutor(new AdminChat());
-        getCommand("ac").setExecutor(new AdminChat());
-        getCommand("adminstaffchat").setExecutor(new AdminChat());
-        getCommand("actoggle").setExecutor(new AdminChatToggle());
-        getCommand("adminchattoggle").setExecutor(new AdminChatToggle());
+        if (config.getBoolean("adminchat-enabled")){
+            //getCommand("adminchat").setExecutor(new AdminChat());
+            //getCommand("asc").setExecutor(new AdminChat());
+            //getCommand("ac").setExecutor(new AdminChat()); -> consuming ~4 memory
+            //getCommand("adminstaffchat").setExecutor(new AdminChat());
+            getCommand("adminchat").setExecutor(new AdminChat()); // aliases: asc ac adminstaffchat
+            getCommand("actoggle").setExecutor(new AdminChatToggle());
+            getCommand("adminchattoggle").setExecutor(new AdminChatToggle());
+        }
         getCommand("schelp").setExecutor(new StaffChatHelp(this));
         getCommand("staffchathelp").setExecutor(new StaffChatHelp(this));
 
