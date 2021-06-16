@@ -6,7 +6,6 @@ import dev.pace.staffchat.metrics.Metrics;
 import dev.pace.staffchat.updatechecker.UpdateChecker;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
-
 import java.util.Map;
 import java.util.UUID;
 import java.util.logging.Logger;
@@ -23,6 +22,7 @@ public final class Main extends JavaPlugin {
 
     public Map<UUID, Boolean> toggledSC = Maps.newConcurrentMap();
     public Map<UUID, Boolean> toggledAC = Maps.newConcurrentMap();
+    public Map<UUID, Boolean> toggledDEV = Maps.newConcurrentMap();
 
     public static Main getInstance() {
         return instance;
@@ -38,6 +38,7 @@ public final class Main extends JavaPlugin {
         Main.instance = this;
         config = this.getConfig();
         config.options().copyDefaults(true);
+        config.addDefault("developerchat-enabled", true);
         config.addDefault("adminchat-enabled", true);
         config.addDefault("update-checker", false);
         this.saveConfig();
@@ -52,6 +53,11 @@ public final class Main extends JavaPlugin {
             getCommand("adminchat").setExecutor(new AdminChat()); // aliases: asc ac adminstaffchat
             getCommand("actoggle").setExecutor(new AdminChatToggle());
             getCommand("adminchattoggle").setExecutor(new AdminChatToggle());
+        }
+        if (config.getBoolean("developerchat-enabled")){
+            getCommand("devchat").setExecutor(new DeveloperChat()); // aliases: developerchat
+            getCommand("devchattoggle").setExecutor(new DeveloperChatToggle());
+            getCommand("developerchattoggle").setExecutor(new DeveloperChatToggle());
         }
         getCommand("schelp").setExecutor(new StaffChatHelp(this));
         getCommand("staffchathelp").setExecutor(new StaffChatHelp(this));
@@ -69,5 +75,4 @@ public final class Main extends JavaPlugin {
     @Override
     public void onDisable() {
     }
-
 }

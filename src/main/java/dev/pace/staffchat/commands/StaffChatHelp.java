@@ -35,14 +35,16 @@ public class StaffChatHelp implements CommandExecutor {
             return true;
         }
         if (command.getName().equalsIgnoreCase("schelp")) {
-            p.sendMessage(this.cc("&eStaff Chat Help - Current Version: 1.2 - by Pace#0001"));
+            p.sendMessage(this.cc("&eStaff Chat Help - Current Version: 1.3"));
             p.sendMessage(this.cc("&6--------------------------------------"));
             p.sendMessage(this.cc("&6/sc <message> - &eTalk in staff chat."));
             p.sendMessage(this.cc("&6/sctoggle- &eEnable or Disable the Staff Chat."));
             p.sendMessage(this.cc("&6/screload - &eReloads plugin configuration."));
+            p.sendMessage(this.cc("&6/devchat <message> - &eTalk in Developer Chat."));
+            p.sendMessage(this.cc("&6/devchattoggle- &eEnable or Disable the Developer Chat."));
             p.sendMessage(this.cc("&6/adminchat <message> - &eTalk in admin chat."));
-            p.sendMessage(this.cc("&6/adminchattoggle- &eEnable or Disable the Admin Chat"));
-            p.sendMessage(this.cc("&6/schelp - &eView all staff chat useful commands."));
+            p.sendMessage(this.cc("&6/adminchattoggle- &eEnable or Disable the Admin Chat."));
+            p.sendMessage(this.cc("&6/schelp - &eView all this plugin's useful commands."));
             return true;
         }
         return false;

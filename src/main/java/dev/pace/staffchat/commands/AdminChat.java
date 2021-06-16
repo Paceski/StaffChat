@@ -36,7 +36,7 @@ public class AdminChat implements CommandExecutor {
         }
 
         if (!Main.getInstance().toggledAC.get(p.getUniqueId())) {
-            p.sendMessage("Do /adminchattoggle to talk in staff chat!");
+            p.sendMessage("Do /adminchattoggle to talk in admin chat!");
             return true;
         }
         for (Player staff : Bukkit.getOnlinePlayers()) {
