@@ -36,7 +36,7 @@ public class DeveloperChat implements CommandExecutor {
         }
 
         if (!StaffChat.getInstance().toggledDEV.get(p.getUniqueId())) {
-            p.sendMessage("Do /developerchattoggle to talk in staff chat!");
+            p.sendMessage("§7Do /developerchattoggle to talk in staff chat!");
             return true;
         }
         for (Player staff : Bukkit.getOnlinePlayers()) {

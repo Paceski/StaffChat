@@ -34,7 +34,7 @@ public class StaffChat implements CommandExecutor {
         }
 
         if (!dev.pace.staffchat.StaffChat.getInstance().toggledSC.get(p.getUniqueId())) {
-            p.sendMessage("Do /sctoggle to talk in staff chat!");
+            p.sendMessage("§7Do /sctoggle to talk in staff chat!");
             return true;
         }
         for (Player staff : Bukkit.getOnlinePlayers()) {
