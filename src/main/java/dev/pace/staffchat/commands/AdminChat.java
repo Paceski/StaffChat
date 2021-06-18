@@ -1,6 +1,6 @@
 package dev.pace.staffchat.commands;
 
-import dev.pace.staffchat.Main;
+import dev.pace.staffchat.StaffChat;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -19,12 +19,12 @@ public class AdminChat implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         Player p = (Player) sender;
-        Main main = Main.getInstance();
-        main.toggledAC.putIfAbsent(p.getUniqueId(), true);
-        if (!main.config.getBoolean("adminchat-enabled")) return false;
+        StaffChat staffChat = StaffChat.getInstance();
+        staffChat.toggledAC.putIfAbsent(p.getUniqueId(), true);
+        if (!staffChat.config.getBoolean("adminchat-enabled")) return false;
         if (p.hasPermission("staff.adminchat") || p.isOp()) {
         } else {
-            p.sendMessage(ChatColor.translateAlternateColorCodes('&', main.config.getString("adminchat.error")));
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&', staffChat.config.getString("adminchat.error")));
             return true;
         }
 
@@ -35,15 +35,15 @@ public class AdminChat implements CommandExecutor {
             return true;
         }
 
-        if (!Main.getInstance().toggledAC.get(p.getUniqueId())) {
+        if (!StaffChat.getInstance().toggledAC.get(p.getUniqueId())) {
             p.sendMessage("Do /adminchattoggle to talk in admin chat!");
             return true;
         }
         for (Player staff : Bukkit.getOnlinePlayers()) {
             if (staff.hasPermission("staff.adminchat")) {
-                Main.getInstance().toggledAC.putIfAbsent(staff.getUniqueId(), true);
-                if (Main.getInstance().toggledAC.get(staff.getUniqueId())) {
-                    staff.sendMessage(ChatColor.translateAlternateColorCodes('&', main.config.getString("adminchat.header")) + p.getName() + ": " + message);
+                StaffChat.getInstance().toggledAC.putIfAbsent(staff.getUniqueId(), true);
+                if (StaffChat.getInstance().toggledAC.get(staff.getUniqueId())) {
+                    staff.sendMessage(ChatColor.translateAlternateColorCodes('&', staffChat.config.getString("adminchat.header")) + p.getName() + ": " + message);
                 }
             }
         }

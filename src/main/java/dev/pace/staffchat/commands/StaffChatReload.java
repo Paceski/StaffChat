@@ -1,6 +1,6 @@
 package dev.pace.staffchat.commands;
 
-import dev.pace.staffchat.Main;
+import dev.pace.staffchat.StaffChat;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -22,7 +22,7 @@ public class StaffChatReload implements CommandExecutor {
             return true;
         }
         try {
-            Main.getInstance().reloadConfiguration();
+            StaffChat.getInstance().reloadConfiguration();
             sender.sendMessage(ChatColor.GREEN + "Config has been reloaded!");
         } catch (NullPointerException e) {
             sender.sendMessage(ChatColor.DARK_RED + "Error! Check console for more details.");

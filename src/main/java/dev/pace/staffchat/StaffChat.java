@@ -15,16 +15,16 @@ import java.util.logging.Logger;
  * No part of this publication may be reproduced, disturbed, or transmitted in any form or any means.
  */
 
-public final class Main extends JavaPlugin {
+public final class StaffChat extends JavaPlugin {
 
-    public static Main instance = null;
+    public static StaffChat instance = null;
     public FileConfiguration config;
 
     public Map<UUID, Boolean> toggledSC = Maps.newConcurrentMap();
     public Map<UUID, Boolean> toggledAC = Maps.newConcurrentMap();
     public Map<UUID, Boolean> toggledDEV = Maps.newConcurrentMap();
 
-    public static Main getInstance() {
+    public static StaffChat getInstance() {
         return instance;
     }
 
@@ -35,7 +35,7 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        Main.instance = this;
+        StaffChat.instance = this;
         config = this.getConfig();
         config.options().copyDefaults(true);
         config.addDefault("developerchat-enabled", true);
@@ -46,8 +46,8 @@ public final class Main extends JavaPlugin {
         int pluginId = 11633;
         Metrics metrics = new Metrics(this, 11633);
         getCommand("screload").setExecutor(new StaffChatReload());
-        getCommand("staffchat").setExecutor(new StaffChat());
-        getCommand("sc").setExecutor(new StaffChat());
+        getCommand("staffchat").setExecutor(new dev.pace.staffchat.commands.StaffChat());
+        getCommand("sc").setExecutor(new dev.pace.staffchat.commands.StaffChat());
         getCommand("sctoggle").setExecutor(new StaffChatToggle());
         if (config.getBoolean("adminchat-enabled")){
             getCommand("adminchat").setExecutor(new AdminChat()); // aliases: asc ac adminstaffchat

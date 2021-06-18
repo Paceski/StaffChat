@@ -1,6 +1,6 @@
 package dev.pace.staffchat.commands;
 
-import dev.pace.staffchat.Main;
+import dev.pace.staffchat.StaffChat;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -16,9 +16,9 @@ import java.util.ArrayList;
 public class StaffChatHelp implements CommandExecutor {
 
     private ArrayList<String> about;
-    private final Main plugin;
+    private final StaffChat plugin;
 
-    public StaffChatHelp(final Main instance) {
+    public StaffChatHelp(final StaffChat instance) {
         this.about = new ArrayList<String>();
         this.plugin = instance;
     }

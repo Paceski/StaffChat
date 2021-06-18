@@ -1,5 +1,5 @@
 name: StaffChat
-main: dev.pace.staffchat.Main
+main: dev.pace.staffchat.StaffChat
 version: 1.3
 author: Pace
 api-version: 1.13

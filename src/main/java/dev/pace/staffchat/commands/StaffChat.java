@@ -1,6 +1,5 @@
 package dev.pace.staffchat.commands;
 
-import dev.pace.staffchat.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -19,11 +18,11 @@ public class StaffChat implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         Player p = (Player) sender;
-        Main main = Main.getInstance();
-        main.toggledSC.putIfAbsent(p.getUniqueId(), true);
+        dev.pace.staffchat.StaffChat staffChat = dev.pace.staffchat.StaffChat.getInstance();
+        staffChat.toggledSC.putIfAbsent(p.getUniqueId(), true);
         if (p.hasPermission("staff.staffchat") || p.isOp()) {
         } else {
-            p.sendMessage(ChatColor.translateAlternateColorCodes('&',main.config.getString("staffchat.error")));
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&', staffChat.config.getString("staffchat.error")));
             return true;
         }
 
@@ -34,15 +33,15 @@ public class StaffChat implements CommandExecutor {
             return true;
         }
 
-        if (!Main.getInstance().toggledSC.get(p.getUniqueId())) {
+        if (!dev.pace.staffchat.StaffChat.getInstance().toggledSC.get(p.getUniqueId())) {
             p.sendMessage("Do /sctoggle to talk in staff chat!");
             return true;
         }
         for (Player staff : Bukkit.getOnlinePlayers()) {
             if (staff.hasPermission("staff.staffchat")) {
-                Main.getInstance().toggledSC.putIfAbsent(staff.getUniqueId(), true);
-                if (Main.getInstance().toggledSC.get(staff.getUniqueId())) {
-                    staff.sendMessage(ChatColor.translateAlternateColorCodes('&', main.config.getString("staffchat.header")) + p.getName() + ": " + message);
+                dev.pace.staffchat.StaffChat.getInstance().toggledSC.putIfAbsent(staff.getUniqueId(), true);
+                if (dev.pace.staffchat.StaffChat.getInstance().toggledSC.get(staff.getUniqueId())) {
+                    staff.sendMessage(ChatColor.translateAlternateColorCodes('&', staffChat.config.getString("staffchat.header")) + p.getName() + ": " + message);
                 }
             }
         }

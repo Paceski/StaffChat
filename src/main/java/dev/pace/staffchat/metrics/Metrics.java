@@ -4,7 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
-import dev.pace.staffchat.Main;
+import dev.pace.staffchat.StaffChat;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -144,7 +144,7 @@ public class Metrics {
         }
     }
 
-    public Metrics(Main plugin, Plugin plugin1, int pluginId) {
+    public Metrics(StaffChat plugin, Plugin plugin1, int pluginId) {
         this.plugin = plugin1;
         this.pluginId = pluginId;
     }
