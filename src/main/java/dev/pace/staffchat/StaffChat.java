@@ -6,6 +6,7 @@ import dev.pace.staffchat.metrics.Metrics;
 import dev.pace.staffchat.updatechecker.UpdateChecker;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+
 import java.util.Map;
 import java.util.UUID;
 import java.util.logging.Logger;
@@ -49,12 +50,12 @@ public final class StaffChat extends JavaPlugin {
         getCommand("staffchat").setExecutor(new dev.pace.staffchat.commands.StaffChat());
         getCommand("sc").setExecutor(new dev.pace.staffchat.commands.StaffChat());
         getCommand("sctoggle").setExecutor(new StaffChatToggle());
-        if (config.getBoolean("adminchat-enabled")){
+        if (config.getBoolean("adminchat-enabled")) {
             getCommand("adminchat").setExecutor(new AdminChat()); // aliases: asc ac adminstaffchat
             getCommand("actoggle").setExecutor(new AdminChatToggle());
             getCommand("adminchattoggle").setExecutor(new AdminChatToggle());
         }
-        if (config.getBoolean("developerchat-enabled")){
+        if (config.getBoolean("developerchat-enabled")) {
             getCommand("devchat").setExecutor(new DeveloperChat()); // aliases: developerchat
             getCommand("devchattoggle").setExecutor(new DeveloperChatToggle());
             getCommand("developerchattoggle").setExecutor(new DeveloperChatToggle());
