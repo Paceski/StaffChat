@@ -36,7 +36,7 @@ public class StaffChatHelp implements CommandExecutor {
             return true;
         }
         if (command.getName().equalsIgnoreCase("schelp")) {
-            p.sendMessage(this.cc("&eStaff Chat Help - Current Version: 1.4"));
+            p.sendMessage(this.cc("&eStaff Chat Help - Current Version: 1.5"));
             p.sendMessage(this.cc("&6--------------------------------------"));
             p.sendMessage(this.cc("&6/sc <message> - &eTalk in staff chat."));
             p.sendMessage(this.cc("&6/sctoggle- &eEnable or Disable the Staff Chat."));
