@@ -1,5 +1,6 @@
 package dev.pace.staffchat.commands;
 
+import dev.pace.staffchat.StaffChat;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -24,7 +25,7 @@ public class StaffChatHelp implements CommandExecutor {
             return true;
         }
         if (command.getName().equalsIgnoreCase("schelp")) {
-            p.sendMessage(this.cc("&eStaff Chat Help - Current Version: 1.6"));
+            p.sendMessage(this.cc("&eStaff Chat Help - Current Version: " + StaffChat.getInstance().getVersion()));
             p.sendMessage(this.cc("&6--------------------------------------"));
             p.sendMessage(this.cc("&6/sc <message> - &eTalk in staff chat."));
             p.sendMessage(this.cc("&6/sctoggle- &eEnable or Disable the Staff Chat."));

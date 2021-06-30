@@ -29,6 +29,10 @@ public final class StaffChat extends JavaPlugin {
         return instance;
     }
 
+    public String getVersion() {
+        return this.getDescription().getVersion();
+    }
+
     public void reloadConfiguration() {
         this.reloadConfig();
         config = this.getConfig();
