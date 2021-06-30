@@ -1,13 +1,10 @@
 package dev.pace.staffchat.commands;
 
-import dev.pace.staffchat.StaffChat;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
-import java.util.ArrayList;
 
 /**
  * Created by Pace
@@ -16,27 +13,18 @@ import java.util.ArrayList;
 
 public class StaffChatHelp implements CommandExecutor {
 
-    private ArrayList<String> about;
-    private final StaffChat plugin;
-
-    public StaffChatHelp(final StaffChat instance) {
-        this.about = new ArrayList<String>();
-        this.plugin = instance;
-    }
-
     public boolean onCommand(final CommandSender sender, final Command command, final String label, final String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage("This command can only be used by In-Game players.");
+            sender.sendMessage("You cannot do this from console.");
             return true;
         }
         final Player p = (Player) sender;
         if (!p.hasPermission("staff.staffchat")) {
-            this.about.add(p.getName());
             p.sendMessage(ChatColor.RED + "You are not allowed to execute this command. Contact a server administrator if you believe this is an error.");
             return true;
         }
         if (command.getName().equalsIgnoreCase("schelp")) {
-            p.sendMessage(this.cc("&eStaff Chat Help - Current Version: 1.5"));
+            p.sendMessage(this.cc("&eStaff Chat Help - Current Version: 1.6"));
             p.sendMessage(this.cc("&6--------------------------------------"));
             p.sendMessage(this.cc("&6/sc <message> - &eTalk in staff chat."));
             p.sendMessage(this.cc("&6/sctoggle- &eEnable or Disable the Staff Chat."));

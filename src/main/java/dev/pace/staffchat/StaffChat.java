@@ -60,8 +60,8 @@ public final class StaffChat extends JavaPlugin {
             getCommand("devchattoggle").setExecutor(new DeveloperChatToggle());
             getCommand("developerchattoggle").setExecutor(new DeveloperChatToggle());
         }
-        getCommand("schelp").setExecutor(new StaffChatHelp(this));
-        getCommand("staffchathelp").setExecutor(new StaffChatHelp(this));
+        getCommand("schelp").setExecutor(new StaffChatHelp());
+        getCommand("staffchathelp").setExecutor(new StaffChatHelp());
 
         new UpdateChecker(this, 92585).getVersion(version -> {
             if (!config.getBoolean("update-checker")) return;
