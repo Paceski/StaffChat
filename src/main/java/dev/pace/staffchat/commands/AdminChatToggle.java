@@ -27,6 +27,9 @@ public class AdminChatToggle implements CommandExecutor {
             return true;
         }
         UUID uuid = player.getUniqueId();
+        if(!staffChat.toggleTable.contains(player.getUniqueId(), "admin"))
+            staffChat.toggleTable.put(player.getUniqueId(), "admin", true);
+
         boolean isEnabled = StaffChat.getInstance().toggleTable.get(player.getUniqueId(), "admin");
         StaffChat.getInstance().toggleTable.put(player.getUniqueId(),"admin", !isEnabled); // if it was disabled, this is true,
         player.sendMessage(!isEnabled ? ChatColor.translateAlternateColorCodes('&', staffChat.config.getString("adminchat.toggle-on")) : ChatColor.translateAlternateColorCodes('&', staffChat.config.getString("adminchat.toggle-off")));
