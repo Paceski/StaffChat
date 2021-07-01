@@ -1,6 +1,9 @@
 package dev.pace.staffchat;
 
+import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Table;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import dev.pace.staffchat.commands.*;
 import dev.pace.staffchat.metrics.Metrics;
 import dev.pace.staffchat.updatechecker.UpdateChecker;
@@ -21,9 +24,7 @@ public final class StaffChat extends JavaPlugin {
     public static StaffChat instance = null;
     public FileConfiguration config;
 
-    public Map<UUID, Boolean> toggledSC = Maps.newConcurrentMap();
-    public Map<UUID, Boolean> toggledAC = Maps.newConcurrentMap();
-    public Map<UUID, Boolean> toggledDEV = Maps.newConcurrentMap();
+    public Table<UUID, String, Boolean> toggleTable = HashBasedTable.create();
 
     public static StaffChat getInstance() {
         return instance;

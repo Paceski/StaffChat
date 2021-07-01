@@ -24,10 +24,12 @@ public class StaffChatToggle implements CommandExecutor {
             return true;
         }
 
-        staffChat.toggledSC.putIfAbsent(player.getUniqueId(), true);
 
-        boolean isEnabled = staffChat.toggledSC.get(player.getUniqueId());
-        boolean previousValue = staffChat.toggledSC.put(player.getUniqueId(), !isEnabled);
+        if(!staffChat.toggleTable.contains(player.getUniqueId(), "staff"))
+            staffChat.toggleTable.put(player.getUniqueId(), "staff", true);
+
+        boolean isEnabled = staffChat.toggleTable.get(player.getUniqueId(), "staff");
+        boolean previousValue = staffChat.toggleTable.put(player.getUniqueId(), "staff",!isEnabled);
         player.sendMessage(!previousValue ? ChatColor.translateAlternateColorCodes('&', staffChat.config.getString("staffchat.toggle-on")) : ChatColor.translateAlternateColorCodes('&', staffChat.config.getString("staffchat.toggle-off")));
         return true;
     }

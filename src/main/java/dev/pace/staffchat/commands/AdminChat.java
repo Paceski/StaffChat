@@ -20,7 +20,11 @@ public class AdminChat implements CommandExecutor {
 
         Player p = (Player) sender;
         StaffChat staffChat = StaffChat.getInstance();
-        staffChat.toggledAC.putIfAbsent(p.getUniqueId(), true);
+
+        // If this does nto contain staff bool, add it.
+        if(!staffChat.toggleTable.contains(p.getUniqueId(), "admin"))
+            staffChat.toggleTable.put(p.getUniqueId(), "admin", true);
+
         if (!staffChat.config.getBoolean("adminchat-enabled")) return false;
         if (p.hasPermission("staff.adminchat") || p.isOp()) {
         } else {
@@ -35,14 +39,15 @@ public class AdminChat implements CommandExecutor {
             return true;
         }
 
-        if (!StaffChat.getInstance().toggledAC.get(p.getUniqueId())) {
+        if (!StaffChat.getInstance().toggleTable.get(p.getUniqueId(), "staff")) {
             p.sendMessage("§7Do /adminchattoggle to talk in admin chat!");
             return true;
         }
         for (Player staff : Bukkit.getOnlinePlayers()) {
             if (staff.hasPermission("staff.adminchat")) {
-                StaffChat.getInstance().toggledAC.putIfAbsent(staff.getUniqueId(), true);
-                if (StaffChat.getInstance().toggledAC.get(staff.getUniqueId())) {
+                if(!staffChat.toggleTable.contains(staff.getUniqueId(), "admin"))
+                    staffChat.toggleTable.put(staff.getUniqueId(), "admin", true);
+                if (StaffChat.getInstance().toggleTable.get(staff.getUniqueId(), "admin")) {
                     staff.sendMessage(ChatColor.translateAlternateColorCodes('&', staffChat.config.getString("adminchat.header")) + p.getName() + ": " + message);
                 }
             }

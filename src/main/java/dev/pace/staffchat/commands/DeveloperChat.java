@@ -20,7 +20,8 @@ public class DeveloperChat implements CommandExecutor {
 
         Player p = (Player) sender;
         StaffChat staffChat = StaffChat.getInstance();
-        staffChat.toggledDEV.putIfAbsent(p.getUniqueId(), true);
+        if(!staffChat.toggleTable.contains(p.getUniqueId(), "dev"))
+            staffChat.toggleTable.put(p.getUniqueId(), "dev", true);
         if (!staffChat.config.getBoolean("developerchat-enabled")) return false;
         if (p.hasPermission("staff.developerchat") || p.isOp()) {
         } else {
@@ -35,14 +36,15 @@ public class DeveloperChat implements CommandExecutor {
             return true;
         }
 
-        if (!StaffChat.getInstance().toggledDEV.get(p.getUniqueId())) {
+        if (!StaffChat.getInstance().toggleTable.get(p.getUniqueId(), "dev")) {
             p.sendMessage("§7Do /devchattoggle to talk in staff chat!");
             return true;
         }
         for (Player staff : Bukkit.getOnlinePlayers()) {
             if (staff.hasPermission("staff.developerchat")) {
-                StaffChat.getInstance().toggledDEV.putIfAbsent(staff.getUniqueId(), true);
-                if (StaffChat.getInstance().toggledDEV.get(staff.getUniqueId())) {
+                if(!staffChat.toggleTable.contains(staff.getUniqueId(), "dev"))
+                    staffChat.toggleTable.put(staff.getUniqueId(), "dev", true);
+                if (StaffChat.getInstance().toggleTable.get(staff.getUniqueId(), "dev")) {
                     staff.sendMessage(ChatColor.translateAlternateColorCodes('&', staffChat.config.getString("developerchat.header")) + p.getName() + ": " + message);
                 }
             }

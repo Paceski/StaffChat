@@ -27,8 +27,8 @@ public class DeveloperChatToggle implements CommandExecutor {
             return true;
         }
         UUID uuid = player.getUniqueId();
-        boolean isEnabled = StaffChat.getInstance().toggledDEV.get(player.getUniqueId());
-        StaffChat.getInstance().toggledDEV.put(player.getUniqueId(), !isEnabled); // if it was disabled, this is true,
+        boolean isEnabled = StaffChat.getInstance().toggleTable.get(player.getUniqueId(), "dev");
+        StaffChat.getInstance().toggleTable.put(player.getUniqueId(),"dev",!isEnabled); // if it was disabled, this is true,
         player.sendMessage(!isEnabled ? ChatColor.translateAlternateColorCodes('&', staffChat.config.getString("developerchat.toggle-on")) : ChatColor.translateAlternateColorCodes('&', staffChat.config.getString("developerchat.toggle-off")));
         return true;
     }
