@@ -21,7 +21,7 @@ public class AdminChat implements CommandExecutor {
         Player p = (Player) sender;
         StaffChat staffChat = StaffChat.getInstance();
 
-        // If this does nto contain staff bool, add it.
+        // If this does not contain staff bool, add it.
         if(!staffChat.toggleTable.contains(p.getUniqueId(), "admin"))
             staffChat.toggleTable.put(p.getUniqueId(), "admin", true);
 
