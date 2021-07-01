@@ -1,16 +1,13 @@
 package dev.pace.staffchat;
 
 import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Table;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import dev.pace.staffchat.commands.*;
 import dev.pace.staffchat.metrics.Metrics;
 import dev.pace.staffchat.updatechecker.UpdateChecker;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.Map;
 import java.util.UUID;
 import java.util.logging.Logger;
 
