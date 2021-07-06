@@ -39,7 +39,7 @@ public class AdminChat implements CommandExecutor {
             return true;
         }
 
-        if (!StaffChat.getInstance().toggleTable.get(p.getUniqueId(), "staff")) {
+        if (!StaffChat.getInstance().toggleTable.get(p.getUniqueId(), "admin")) {
             p.sendMessage("§7Do /adminchattoggle to talk in admin chat!");
             return true;
         }

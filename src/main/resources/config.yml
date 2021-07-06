@@ -11,7 +11,7 @@ adminchat:
   toggle-off: "&3You have toggled admin chat &coff&3!"
   header: "&8[&cAdminChat&8]&f "
 developerchat:
-  error: "&cYou are not allowed to   execute this command. Contact a server administrator if you believe this is an error."
+  error: "&cYou are not allowed to execute this command. Contact a server administrator if you believe this is an error."
   toggle-on: "&3You have toggled developer chat &aon&3!"
   toggle-off: "&3You have toggled developer chat &coff&3!"
   header: "&8[&eDeveloperChat&8]&f "
