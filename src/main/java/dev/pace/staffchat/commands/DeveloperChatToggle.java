@@ -22,7 +22,8 @@ public class DeveloperChatToggle implements CommandExecutor {
         Player player = (Player) commandSender;
         StaffChat staffChat = StaffChat.getInstance();
         if (staffChat == null) return true;
-        if (!player.hasPermission("staff.developerchat") || !player.isOp()) {
+        if (player.hasPermission("staff.developerchat") || player.isOp()) {
+        } else {
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', staffChat.config.getString("developerchat.error")));
             return true;
         }

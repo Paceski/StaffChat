@@ -19,12 +19,11 @@ public class StaffChatToggle implements CommandExecutor {
         if (!(commandSender instanceof Player)) return false;
         Player player = (Player) commandSender;
         StaffChat staffChat = StaffChat.getInstance();
-        if (!player.hasPermission("staff.staffchat") || !player.isOp()) {
+        if (player.hasPermission("staff.staffchat") || player.isOp()) {
+        } else {
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', staffChat.config.getString("staffchat.error")));
             return true;
         }
-
-
         if(!staffChat.toggleTable.contains(player.getUniqueId(), "staff"))
             staffChat.toggleTable.put(player.getUniqueId(), "staff", true);
 

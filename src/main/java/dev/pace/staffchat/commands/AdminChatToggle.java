@@ -22,7 +22,8 @@ public class AdminChatToggle implements CommandExecutor {
         Player player = (Player) commandSender;
         StaffChat staffChat = StaffChat.getInstance();
         if (staffChat == null) return true;
-        if (!player.hasPermission("staff.adminchat") || !player.isOp()) {
+        if (player.hasPermission("staff.adminchat") || player.isOp()) {
+        } else {
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', staffChat.config.getString("adminchat.error")));
             return true;
         }
