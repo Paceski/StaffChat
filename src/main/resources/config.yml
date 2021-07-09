@@ -24,3 +24,5 @@ developerchat:
   # if papi is enabled, you can use these
   placeholder:
     name: "%player%"
+
+enable-placeholders: false
