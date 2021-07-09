@@ -37,6 +37,12 @@ public final class StaffChat extends JavaPlugin {
     public void reloadConfiguration() {
         this.reloadConfig();
         config = this.getConfig();
+
+        if(config.getBoolean("enable-placeholders")) {
+            papiEnabled.set(true);
+        } else {
+            papiEnabled.set(false);
+        }
     }
 
     @Override
@@ -73,8 +79,11 @@ public final class StaffChat extends JavaPlugin {
          */
         if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             // place holder api is alive
-            papiEnabled.set(true);
-            getLogger().info("Hooked into PlaceholderAPI!");
+            if(config.getBoolean("enable-placeholders")) {
+                papiEnabled.set(true);
+                getLogger().info("Hooked into PlaceholderAPI!");
+            }
+            getLogger().info("Hooked into PlaceholderAPI! But configuration disables it!");
         } else {
             getLogger().warning("Could not find PlaceholderAPI! This plugin is optional.");
         }
