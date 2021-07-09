@@ -1,9 +1,9 @@
 name: StaffChat
 main: dev.pace.staffchat.StaffChat
-version: 1.8
+version: 1.9
 author: Pace
 api-version: 1.13
-softdepend: [Placeh1olderAPI]
+softdepend: [PlaceholderAPI]
 commands:
   staffchat:
     description: Staff chat command.
