@@ -5,10 +5,12 @@ import com.google.common.collect.Table;
 import dev.pace.staffchat.commands.*;
 import dev.pace.staffchat.metrics.Metrics;
 import dev.pace.staffchat.updatechecker.UpdateChecker;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.logging.Logger;
 
 /**
@@ -22,6 +24,7 @@ public final class StaffChat extends JavaPlugin {
     public FileConfiguration config;
 
     public Table<UUID, String, Boolean> toggleTable = HashBasedTable.create();
+    public AtomicBoolean papiEnabled = new AtomicBoolean(false);
 
     public static StaffChat getInstance() {
         return instance;
@@ -65,6 +68,17 @@ public final class StaffChat extends JavaPlugin {
         getCommand("schelp").setExecutor(new StaffChatHelp());
         getCommand("staffchathelp").setExecutor(new StaffChatHelp());
 
+        /**
+         * Load Placeholder API
+         */
+        if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            // place holder api is alive
+            papiEnabled.set(true);
+            getLogger().info("Hooked into PlaceholderAPI!");
+        } else {
+            getLogger().warning("Could not find PlaceholderAPI! This plugin is optional.");
+        }
+
         new UpdateChecker(this, 92585).getVersion(version -> {
             if (!config.getBoolean("update-checker")) return;
             if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
@@ -77,5 +91,9 @@ public final class StaffChat extends JavaPlugin {
 
     @Override
     public void onDisable() {
+    }
+
+    public AtomicBoolean getPapiEnabled() {
+        return papiEnabled;
     }
 }

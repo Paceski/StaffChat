@@ -5,13 +5,22 @@ staffchat:
   toggle-on: "&3You have toggled staff chat &aon&3!"
   toggle-off: "&3You have toggled staff chat &coff&3!"
   header: "&8[&eStaffChat&8]&f "
+  # if papi is enabled, you can use these
+  placeholder:
+    name: "%player%"
 adminchat:
   error: "&cYou are not allowed to execute this command. Contact a server administrator if you believe this is an error."
   toggle-on: "&3You have toggled admin chat &aon&3!"
   toggle-off: "&3You have toggled admin chat &coff&3!"
   header: "&8[&cAdminChat&8]&f "
+  # if papi is enabled, you can use these
+  placeholder:
+    name: "%player%"
 developerchat:
   error: "&cYou are not allowed to execute this command. Contact a server administrator if you believe this is an error."
   toggle-on: "&3You have toggled developer chat &aon&3!"
   toggle-off: "&3You have toggled developer chat &coff&3!"
   header: "&8[&eDeveloperChat&8]&f "
+  # if papi is enabled, you can use these
+  placeholder:
+    name: "%player%"

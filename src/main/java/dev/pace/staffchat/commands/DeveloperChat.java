@@ -1,6 +1,7 @@
 package dev.pace.staffchat.commands;
 
 import dev.pace.staffchat.StaffChat;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -40,12 +41,24 @@ public class DeveloperChat implements CommandExecutor {
             p.sendMessage("§7Do /devchattoggle to talk in staff chat!");
             return true;
         }
+        boolean isPapi = dev.pace.staffchat.StaffChat.getInstance().getPapiEnabled().get();
+        String header = staffChat.config.getString("developerchat.header");
+        String placeholder = staffChat.config.getString("developerchat.placeholder.name");
         for (Player staff : Bukkit.getOnlinePlayers()) {
             if (staff.hasPermission("staff.developerchat")) {
                 if(!staffChat.toggleTable.contains(staff.getUniqueId(), "dev"))
                     staffChat.toggleTable.put(staff.getUniqueId(), "dev", true);
                 if (StaffChat.getInstance().toggleTable.get(staff.getUniqueId(), "dev")) {
-                    staff.sendMessage(ChatColor.translateAlternateColorCodes('&', staffChat.config.getString("developerchat.header")) + p.getName() + ": " + message);
+                    String sendMessage = ChatColor.translateAlternateColorCodes('&',  header) +
+                            (isPapi ? placeholder : p.getName())
+                            + ": "
+                            + message;
+
+                    if (isPapi) {
+                        staff.sendMessage(PlaceholderAPI.setPlaceholders(p.getPlayer(), sendMessage));
+                    } else {
+                        staff.sendMessage(sendMessage);
+                    }
                 }
             }
         }

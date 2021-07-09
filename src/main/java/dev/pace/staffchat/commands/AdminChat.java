@@ -1,6 +1,7 @@
 package dev.pace.staffchat.commands;
 
 import dev.pace.staffchat.StaffChat;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -22,7 +23,7 @@ public class AdminChat implements CommandExecutor {
         StaffChat staffChat = StaffChat.getInstance();
 
         // If this does not contain staff bool, add it.
-        if(!staffChat.toggleTable.contains(p.getUniqueId(), "admin"))
+        if (!staffChat.toggleTable.contains(p.getUniqueId(), "admin"))
             staffChat.toggleTable.put(p.getUniqueId(), "admin", true);
 
         if (!staffChat.config.getBoolean("adminchat-enabled")) return false;
@@ -43,12 +44,24 @@ public class AdminChat implements CommandExecutor {
             p.sendMessage("§7Do /adminchattoggle to talk in admin chat!");
             return true;
         }
+        boolean isPapi = dev.pace.staffchat.StaffChat.getInstance().getPapiEnabled().get();
+        String header = staffChat.config.getString("adminchat.header");
+        String placeholder = staffChat.config.getString("adminchat.placeholder.name");
         for (Player staff : Bukkit.getOnlinePlayers()) {
             if (staff.hasPermission("staff.adminchat")) {
-                if(!staffChat.toggleTable.contains(staff.getUniqueId(), "admin"))
+                if (!staffChat.toggleTable.contains(staff.getUniqueId(), "admin"))
                     staffChat.toggleTable.put(staff.getUniqueId(), "admin", true);
                 if (StaffChat.getInstance().toggleTable.get(staff.getUniqueId(), "admin")) {
-                    staff.sendMessage(ChatColor.translateAlternateColorCodes('&', staffChat.config.getString("adminchat.header")) + p.getName() + ": " + message);
+                    String sendMessage = ChatColor.translateAlternateColorCodes('&', header) +
+                            (isPapi ? placeholder : p.getName())
+                            + ": "
+                            + message;
+
+                    if (isPapi) {
+                        staff.sendMessage(PlaceholderAPI.setPlaceholders(p.getPlayer(), sendMessage));
+                    } else {
+                        staff.sendMessage(sendMessage);
+                    }
                 }
             }
         }

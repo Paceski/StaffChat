@@ -3,6 +3,7 @@ main: dev.pace.staffchat.StaffChat
 version: 1.7
 author: Pace
 api-version: 1.13
+softdepend: [PlaceholderAPI]
 commands:
   staffchat:
     description: Staff chat command.
