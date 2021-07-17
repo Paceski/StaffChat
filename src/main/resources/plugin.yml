@@ -1,6 +1,6 @@
 name: StaffChat
 main: dev.pace.staffchat.StaffChat
-version: 1.9
+version: 2.0
 author: Pace
 api-version: 1.13
 softdepend: [PlaceholderAPI]
