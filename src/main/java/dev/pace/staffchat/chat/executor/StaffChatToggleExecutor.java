@@ -11,6 +11,12 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
+/**
+ * Created by Pace
+ * No part of this publication may be reproduced, disturbed, or transmitted in any form or any means.
+ */
+
+
 public class StaffChatToggleExecutor implements CommandExecutor {
 
     private final StaffChatType chatType;
