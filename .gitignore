@@ -1,4 +1,11 @@
-# Project exclude paths
-/target/
 .idea/
-META-INF
+target/
+out/
+
+*.iml
+src/test/
+
+# eclipse project file
+.settings/
+.classpath
+.project

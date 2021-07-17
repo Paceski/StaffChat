@@ -2,7 +2,14 @@ package dev.pace.staffchat;
 
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
-import dev.pace.staffchat.commands.*;
+import dev.pace.staffchat.chat.AdminChatImpl;
+import dev.pace.staffchat.chat.DeveloperChatImpl;
+import dev.pace.staffchat.chat.StaffChatImpl;
+import dev.pace.staffchat.chat.StaffChatType;
+import dev.pace.staffchat.chat.executor.StaffChatExecutor;
+import dev.pace.staffchat.chat.executor.StaffChatToggleExecutor;
+import dev.pace.staffchat.commands.StaffChatHelp;
+import dev.pace.staffchat.commands.StaffChatReload;
 import dev.pace.staffchat.metrics.Metrics;
 import dev.pace.staffchat.updatechecker.UpdateChecker;
 import org.bukkit.Bukkit;
@@ -43,31 +50,30 @@ public final class StaffChat extends JavaPlugin {
     @Override
     public void onEnable() {
         StaffChat.instance = this;
+
         config = this.getConfig();
         config.options().copyDefaults(true);
+        config.addDefault("staffchat-enabled", true);
         config.addDefault("developerchat-enabled", true);
         config.addDefault("adminchat-enabled", true);
         config.addDefault("update-checker", false);
         this.saveConfig();
-        Logger logger = this.getLogger();
-        int pluginId = 11633; // BStats.
-        Metrics metrics = new Metrics(this, 11633);
+
+        final Logger logger = this.getLogger();
+
+        new Metrics(this, 11633);
+
         getCommand("screload").setExecutor(new StaffChatReload());
-        getCommand("staffchat").setExecutor(new dev.pace.staffchat.commands.StaffChat());
-        getCommand("sc").setExecutor(new dev.pace.staffchat.commands.StaffChat());
-        getCommand("sctoggle").setExecutor(new StaffChatToggle());
-        if (config.getBoolean("adminchat-enabled")) {
-            getCommand("adminchat").setExecutor(new AdminChat()); // aliases: asc ac adminstaffchat
-            getCommand("actoggle").setExecutor(new AdminChatToggle());
-            getCommand("adminchattoggle").setExecutor(new AdminChatToggle());
-        }
-        if (config.getBoolean("developerchat-enabled")) {
-            getCommand("devchat").setExecutor(new DeveloperChat()); // aliases: developerchat dc
-            getCommand("devchattoggle").setExecutor(new DeveloperChatToggle());
-            getCommand("developerchattoggle").setExecutor(new DeveloperChatToggle());
-        }
         getCommand("schelp").setExecutor(new StaffChatHelp());
         getCommand("staffchathelp").setExecutor(new StaffChatHelp());
+
+        for (StaffChatType type : new StaffChatType[]{
+                new StaffChatImpl(), new AdminChatImpl(), new DeveloperChatImpl()}) {
+            if (config.getBoolean(type.getPrefix() + "-enabled")) {
+                getCommand(type.getCommand()).setExecutor(new StaffChatExecutor(type));
+                getCommand(type.getToggleCommand()).setExecutor(new StaffChatToggleExecutor(type));
+            }
+        }
 
         // Load PlaceholderAPI
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
