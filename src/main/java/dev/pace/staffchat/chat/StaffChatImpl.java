@@ -25,11 +25,11 @@ public class StaffChatImpl implements StaffChatType {
 
     @Override
     public String getPermission() {
-        return "staff.developerchat";
+        return "staff.staffchat";
     }
 
     @Override
     public String getType() {
-        return "dev";
+        return "staff";
     }
 }
