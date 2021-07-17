@@ -35,7 +35,7 @@ public interface StaffChatType {
             return false;
         }
 
-        if (!StaffChat.getInstance().toggleTable.get(player.getUniqueId(), getType())) {
+        if(StaffChat.getInstance().isChatEnabled(player, this)) {
             player.sendMessage("§7Do /" + getType() + "chattoggle to talk in " + getType() + " chat!");
             return true;
         }

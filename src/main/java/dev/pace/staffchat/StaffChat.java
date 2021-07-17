@@ -14,6 +14,7 @@ import dev.pace.staffchat.metrics.Metrics;
 import dev.pace.staffchat.updatechecker.UpdateChecker;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.UUID;
@@ -95,6 +96,13 @@ public final class StaffChat extends JavaPlugin {
                 logger.info("There is a new update available for Staff Chat. Download it here: https://www.spigotmc.org/resources/staff-chat.92585/");
             }
         });
+    }
+
+    public boolean isChatEnabled(Player player, StaffChatType type) {
+        if(!toggleTable.contains(player.getUniqueId(), type.getType())) {
+            return true;
+        }
+        return StaffChat.getInstance().toggleTable.get(player.getUniqueId(), type.getType());
     }
 
     @Override
