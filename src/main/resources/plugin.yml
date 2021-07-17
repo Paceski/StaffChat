@@ -1,14 +1,14 @@
 name: StaffChat
 main: dev.pace.staffchat.StaffChat
-version: 1.9
+version: 2.1
 author: Pace
 api-version: 1.13
 softdepend: [PlaceholderAPI]
 commands:
   staffchat:
     description: Staff chat command.
-  sc:
-    description: Staff chat command.
+    aliases:
+      - sc
   sctoggle:
     description: Toggle messages from staff chat.
     aliases:
@@ -38,3 +38,4 @@ commands:
     description: Toggle messages from Developer chat.
     aliases:
       - developerchattoggle
+      - dctoggle
