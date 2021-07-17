@@ -33,6 +33,7 @@ commands:
     description: Developer chat command.
     aliases:
       - developerchat
+      - dc
   devchattoggle:
     description: Toggle messages from Developer chat.
     aliases:

@@ -17,7 +17,8 @@ public class StaffChatReload implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(sender instanceof ConsoleCommandSender) {
+        if (sender instanceof ConsoleCommandSender) {
+            // Be able to do /screload from console too.
             ConsoleCommandSender console = (ConsoleCommandSender) sender;
             StaffChat.getInstance().reloadConfiguration();
             console.sendMessage(ChatColor.GREEN + "Config has been reloaded!");

@@ -21,7 +21,7 @@ public class StaffChat implements CommandExecutor {
         Player p = (Player) sender;
         dev.pace.staffchat.StaffChat staffChat = dev.pace.staffchat.StaffChat.getInstance();
 
-        if(!staffChat.toggleTable.contains(p.getUniqueId(), "staff"))
+        if (!staffChat.toggleTable.contains(p.getUniqueId(), "staff"))
             staffChat.toggleTable.put(p.getUniqueId(), "staff", true);
 
         if (p.hasPermission("staff.staffchat") || p.isOp()) {
@@ -46,7 +46,7 @@ public class StaffChat implements CommandExecutor {
         String placeholder = staffChat.config.getString("staffchat.placeholder.name");
         for (Player staff : Bukkit.getOnlinePlayers()) {
             if (staff.hasPermission("staff.staffchat")) {
-                if(!staffChat.toggleTable.contains(staff.getUniqueId(), "staff"))
+                if (!staffChat.toggleTable.contains(staff.getUniqueId(), "staff"))
                     staffChat.toggleTable.put(staff.getUniqueId(), "staff", true);
                 if (dev.pace.staffchat.StaffChat.getInstance().toggleTable.get(staff.getUniqueId(), "staff")) {
                     String willSendMessage =
@@ -56,7 +56,7 @@ public class StaffChat implements CommandExecutor {
                                     + ": "
                                     + message;
 
-                    if(isPapi) {
+                    if (isPapi) {
                         staff.sendMessage(PlaceholderAPI.setPlaceholders(p.getPlayer(), willSendMessage));
                     } else {
                         staff.sendMessage(willSendMessage);

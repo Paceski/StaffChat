@@ -37,12 +37,7 @@ public final class StaffChat extends JavaPlugin {
     public void reloadConfiguration() {
         this.reloadConfig();
         config = this.getConfig();
-
-        if(config.getBoolean("enable-placeholders")) {
-            papiEnabled.set(true);
-        } else {
-            papiEnabled.set(false);
-        }
+        papiEnabled.set(config.getBoolean("enable-placeholders"));
     }
 
     @Override
@@ -55,7 +50,7 @@ public final class StaffChat extends JavaPlugin {
         config.addDefault("update-checker", false);
         this.saveConfig();
         Logger logger = this.getLogger();
-        int pluginId = 11633;
+        int pluginId = 11633; // BStats.
         Metrics metrics = new Metrics(this, 11633);
         getCommand("screload").setExecutor(new StaffChatReload());
         getCommand("staffchat").setExecutor(new dev.pace.staffchat.commands.StaffChat());
@@ -67,23 +62,21 @@ public final class StaffChat extends JavaPlugin {
             getCommand("adminchattoggle").setExecutor(new AdminChatToggle());
         }
         if (config.getBoolean("developerchat-enabled")) {
-            getCommand("devchat").setExecutor(new DeveloperChat()); // aliases: developerchat
+            getCommand("devchat").setExecutor(new DeveloperChat()); // aliases: developerchat dc
             getCommand("devchattoggle").setExecutor(new DeveloperChatToggle());
             getCommand("developerchattoggle").setExecutor(new DeveloperChatToggle());
         }
         getCommand("schelp").setExecutor(new StaffChatHelp());
         getCommand("staffchathelp").setExecutor(new StaffChatHelp());
 
-        /**
-         * Load Placeholder API
-         */
-        if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+        // Load PlaceholderAPI
+        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             // place holder api is alive
-            if(config.getBoolean("enable-placeholders")) {
+            if (config.getBoolean("enable-placeholders")) {
                 papiEnabled.set(true);
-                getLogger().info("Hooked into PlaceholderAPI!");
+                getLogger().info("Hooked into PlaceholderAPI! If you encounter any bugs within config with placeholders make sure to report it to the plugin developer.");
             }
-            getLogger().info("Hooked into PlaceholderAPI! But configuration disables it!");
+            getLogger().info("Hooked into PlaceholderAPI! But configuration disables it, it is still in beta testing so we do not recommend using it.");
         } else {
             getLogger().warning("Could not find PlaceholderAPI! This plugin is optional.");
         }

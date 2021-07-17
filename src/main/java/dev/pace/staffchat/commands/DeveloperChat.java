@@ -21,7 +21,7 @@ public class DeveloperChat implements CommandExecutor {
 
         Player p = (Player) sender;
         StaffChat staffChat = StaffChat.getInstance();
-        if(!staffChat.toggleTable.contains(p.getUniqueId(), "dev"))
+        if (!staffChat.toggleTable.contains(p.getUniqueId(), "dev"))
             staffChat.toggleTable.put(p.getUniqueId(), "dev", true);
         if (!staffChat.config.getBoolean("developerchat-enabled")) return false;
         if (p.hasPermission("staff.developerchat") || p.isOp()) {
@@ -46,10 +46,10 @@ public class DeveloperChat implements CommandExecutor {
         String placeholder = staffChat.config.getString("developerchat.placeholder.name");
         for (Player staff : Bukkit.getOnlinePlayers()) {
             if (staff.hasPermission("staff.developerchat")) {
-                if(!staffChat.toggleTable.contains(staff.getUniqueId(), "dev"))
+                if (!staffChat.toggleTable.contains(staff.getUniqueId(), "dev"))
                     staffChat.toggleTable.put(staff.getUniqueId(), "dev", true);
                 if (StaffChat.getInstance().toggleTable.get(staff.getUniqueId(), "dev")) {
-                    String sendMessage = ChatColor.translateAlternateColorCodes('&',  header) +
+                    String sendMessage = ChatColor.translateAlternateColorCodes('&', header) +
                             (isPapi ? placeholder : p.getName())
                             + ": "
                             + message;
