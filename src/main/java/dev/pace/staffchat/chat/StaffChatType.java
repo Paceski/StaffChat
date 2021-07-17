@@ -26,7 +26,7 @@ public interface StaffChatType {
 
     default boolean sendChatMessage(final Player player, final String message) {
         if (!player.hasPermission(getPermission()) && !player.isOp()) {
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', StaffChat.instance.config.getString(getType() + ".error")));
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', StaffChat.instance.config.getString(getPrefix() + ".error")));
             return false;
         }
 
