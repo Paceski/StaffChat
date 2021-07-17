@@ -1,0 +1,11 @@
+.idea/
+target/
+out/
+
+*.iml
+src/test/
+
+# eclipse project file
+.settings/
+.classpath
+.project
