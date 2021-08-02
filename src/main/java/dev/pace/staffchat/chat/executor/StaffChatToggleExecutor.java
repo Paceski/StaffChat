@@ -16,7 +16,6 @@ import java.util.UUID;
  * No part of this publication may be reproduced, disturbed, or transmitted in any form or any means.
  */
 
-
 public class StaffChatToggleExecutor implements CommandExecutor {
 
     private final StaffChatType chatType;

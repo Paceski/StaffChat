@@ -51,7 +51,6 @@ public final class StaffChat extends JavaPlugin {
     @Override
     public void onEnable() {
         StaffChat.instance = this;
-
         config = this.getConfig();
         config.options().copyDefaults(true);
         config.addDefault("staffchat-enabled", true);
@@ -78,7 +77,7 @@ public final class StaffChat extends JavaPlugin {
 
         // Load PlaceholderAPI
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
-            // place holder api is alive
+            // PlaceholderAPI is alive.
             if (config.getBoolean("enable-placeholders")) {
                 papiEnabled.set(true);
                 getLogger().info("Hooked into PlaceholderAPI! If you encounter any bugs within config with placeholders make sure to report it to the plugin developer.");
@@ -91,7 +90,7 @@ public final class StaffChat extends JavaPlugin {
         new UpdateChecker(this, 92585).getVersion(version -> {
             if (!config.getBoolean("update-checker")) return;
             if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
-                logger.info("Staff Chat is up-to-date!");
+                logger.info("No update found for Staff Chat.");
             } else {
                 logger.info("There is a new update available for Staff Chat. Download it here: https://www.spigotmc.org/resources/staff-chat.92585/");
             }
@@ -99,7 +98,7 @@ public final class StaffChat extends JavaPlugin {
     }
 
     public boolean isChatEnabled(Player player, StaffChatType type) {
-        if(!toggleTable.contains(player.getUniqueId(), type.getType())) {
+        if (!toggleTable.contains(player.getUniqueId(), type.getType())) {
             return true;
         }
         return StaffChat.getInstance().toggleTable.get(player.getUniqueId(), type.getType());

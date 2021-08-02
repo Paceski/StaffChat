@@ -11,7 +11,6 @@ import org.bukkit.entity.Player;
  * No part of this publication may be reproduced, disturbed, or transmitted in any form or any means.
  */
 
-
 public interface StaffChatType {
 
     String getCommand();
@@ -35,7 +34,7 @@ public interface StaffChatType {
             return false;
         }
 
-        if(!StaffChat.getInstance().isChatEnabled(player, this)) {
+        if (!StaffChat.getInstance().isChatEnabled(player, this)) {
             player.sendMessage("§7Do /" + getType() + "chattoggle to talk in " + getType() + " chat!");
             return true;
         }
@@ -62,9 +61,6 @@ public interface StaffChatType {
                 }
             }
         }
-
         return true;
-
     }
-
 }

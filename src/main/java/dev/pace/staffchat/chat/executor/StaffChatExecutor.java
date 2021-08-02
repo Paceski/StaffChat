@@ -12,7 +12,6 @@ import org.jetbrains.annotations.NotNull;
  * No part of this publication may be reproduced, disturbed, or transmitted in any form or any means.
  */
 
-
 public class StaffChatExecutor implements CommandExecutor {
 
     private final StaffChatType chatType;
@@ -23,7 +22,7 @@ public class StaffChatExecutor implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if(!(sender instanceof Player)) {
+        if (!(sender instanceof Player)) {
             return true;
         }
 

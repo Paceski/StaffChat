@@ -33,7 +33,7 @@ public class StaffChatReload implements CommandExecutor {
             StaffChat.getInstance().reloadConfiguration();
             sender.sendMessage(ChatColor.GREEN + "Config has been reloaded!");
         } catch (NullPointerException e) {
-            sender.sendMessage(ChatColor.DARK_RED + "Error! Check console for more details.");
+            sender.sendMessage(ChatColor.DARK_RED + "Error! Check console for more details. Having issues? Ask for support from plugin developer.");
         }
         return true;
     }
