@@ -1,7 +1,7 @@
 package dev.pace.staffchat.chat;
 
 import dev.pace.staffchat.StaffChat;
-import dev.pace.staffchat.discordwebhook.DiscordWebhook;
+import dev.pace.staffchat.utils.DiscordWebhook;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -69,10 +69,12 @@ public interface StaffChatType {
         return true;
     }
 
-    public static void SendWebhook(String name, String message) {
-        DiscordWebhook discordWebhook = new DiscordWebhook("");
-        discordWebhook.setUsername(name);
-        discordWebhook.addEmbed(new DiscordWebhook.EmbedObject().setDescription(" Message: " + message).setColor(Color.RED).setFooter("Time Stamp", ""));
+    // Discord send webhook.
+    static void SendWebhook(String name, String message) {
+        if (!StaffChat.getInstance().config.getBoolean("discordwebhook.enabled")) return;
+        DiscordWebhook discordWebhook = new DiscordWebhook(StaffChat.getInstance().config.getString("discordwebhook.webhook"));
+        discordWebhook.setUsername(StaffChat.getInstance().config.getString("discordwebhook.webhookusername"));
+        discordWebhook.addEmbed(new DiscordWebhook.EmbedObject().setDescription(name + ": " + message).setColor(Color.RED).setFooter(StaffChat.getInstance().config.getString("discordwebhook.footer"), StaffChat.getInstance().config.getString("discordwebhook.footericon")));
         try {
             discordWebhook.execute();
         } catch (IOException e) {

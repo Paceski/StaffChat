@@ -1,4 +1,4 @@
-package dev.pace.staffchat.discordwebhook;
+package dev.pace.staffchat.utils;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.awt.*;

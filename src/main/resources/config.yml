@@ -1,7 +1,7 @@
 # You may use unicode characters if you'd like. If you are. Please add -Dfile.encoding=UTF-8 to your start up script to ensure it saves properly.
-# Make it false if you do not want adminchat/developerchat enabled and then do /screload
 # Using placeholders is not recommended because it is still in beta and being worked on. Make sure to download placeholder expansion if you use it though.
 # Like you can use /papi ecloud download Player then you can use the placeholder %player_name%, but as I said, enabling placeholders is not recommended.
+# If you do not know how to use webhooks please read the plugin post there is a quick explanation. Webhook logs all the chat messages. Adminchat, devchat and sc.
 staffchat:
   error: "&cYou are not allowed to execute this command. Contact a server administrator if you believe this is an error."
   toggle-on: "&3You have toggled staff chat &aon&3!"
@@ -25,3 +25,9 @@ developerchat:
     name: "%placeholderyouwant%"
 
 enable-placeholders: false
+discordwebhook:
+  enabled: false
+  webhook: "INSERT-WEBHOOK-HERE"
+  webhookusername: "StaffChat Logs"
+  footer: "New Staff Chat message"
+  footericon: "https://i.imgur.com/frdEAle.png"
