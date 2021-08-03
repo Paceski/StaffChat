@@ -1,10 +1,14 @@
 package dev.pace.staffchat.chat;
 
 import dev.pace.staffchat.StaffChat;
+import dev.pace.staffchat.discordwebhook.DiscordWebhook;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+
+import java.awt.*;
+import java.io.IOException;
 
 /**
  * Created by Pace
@@ -24,6 +28,7 @@ public interface StaffChatType {
     String getType();
 
     default boolean sendChatMessage(final Player player, final String message) {
+        SendWebhook(player.getName(), message);
         if (!player.hasPermission(getPermission()) && !player.isOp()) {
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', StaffChat.instance.config.getString(getPrefix() + ".error")));
             return false;
@@ -63,4 +68,17 @@ public interface StaffChatType {
         }
         return true;
     }
+
+    public static void SendWebhook(String name, String message) {
+        DiscordWebhook discordWebhook = new DiscordWebhook("");
+        discordWebhook.setUsername(name);
+        discordWebhook.addEmbed(new DiscordWebhook.EmbedObject().setDescription(" Message: " + message).setColor(Color.RED).setFooter("Time Stamp", ""));
+        try {
+            discordWebhook.execute();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 }
+
