@@ -28,7 +28,10 @@ public interface StaffChatType {
     String getType();
 
     default boolean sendChatMessage(final Player player, final String message) {
-        SendWebhook(player.getName(), message);
+        // Fix messages sending even if no permission.
+        if (player.hasPermission("staff.staffchat") || player.hasPermission("staff.developerchat") || player.hasPermission("staff.adminchat")) {
+            SendWebhook(player.getName(), message);
+        }
         if (!player.hasPermission(getPermission()) && !player.isOp()) {
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', StaffChat.instance.config.getString(getPrefix() + ".error")));
             return false;

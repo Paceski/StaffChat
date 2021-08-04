@@ -2,6 +2,7 @@
 # Using placeholders is not recommended because it is still in beta and being worked on. Make sure to download placeholder expansion if you use it though.
 # Like you can use /papi ecloud download Player then you can use the placeholder %player_name%, but as I said, enabling placeholders is not recommended.
 # If you do not know how to use webhooks please read the plugin post there is a quick explanation. Webhook logs all the chat messages. Adminchat, devchat and sc.
+# DiscordWebhook is in beta and there are some issues, plugin developer is working on fixing them one by one.
 staffchat:
   error: "&cYou are not allowed to execute this command. Contact a server administrator if you believe this is an error."
   toggle-on: "&3You have toggled staff chat &aon&3!"
