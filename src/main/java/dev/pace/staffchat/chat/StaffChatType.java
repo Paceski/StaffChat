@@ -21,6 +21,8 @@ public interface StaffChatType {
 
     String getToggleCommand();
 
+    String getLockCommand();
+
     String getPrefix();
 
     String getPermission();
@@ -30,10 +32,10 @@ public interface StaffChatType {
     default boolean sendChatMessage(final Player player, final String message) {
         // Fix messages sending even if no permission.
         if (player.hasPermission("staff.staffchat") || player.hasPermission("staff.developerchat") || player.hasPermission("staff.adminchat")) {
-            SendWebhook(player.getName(), message);
+            sendWebhook(player.getName(), message);
         }
         if (!player.hasPermission(getPermission()) && !player.isOp()) {
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', StaffChat.instance.config.getString(getPrefix() + ".error")));
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', StaffChat.getInstance().getConfig().getString(getPrefix() + ".error")));
             return false;
         }
 
@@ -48,13 +50,13 @@ public interface StaffChatType {
         }
 
         final boolean isPapi = dev.pace.staffchat.StaffChat.getInstance().getPapiEnabled().get();
-        final String header = StaffChat.instance.config.getString(getPrefix() + ".header");
-        final String placeholder = StaffChat.instance.config.getString(getPrefix() + ".placeholder.name");
+        final String header = StaffChat.getInstance().getConfig().getString(getPrefix() + ".header");
+        final String placeholder = StaffChat.getInstance().getConfig().getString(getPrefix() + ".placeholder.name");
 
         for (Player staff : Bukkit.getOnlinePlayers()) {
             if (staff.hasPermission(getPermission())) {
-                if (!StaffChat.instance.toggleTable.contains(staff.getUniqueId(), getType()))
-                    StaffChat.instance.toggleTable.put(staff.getUniqueId(), getType(), true);
+                if (!StaffChat.getInstance().toggleTable.contains(staff.getUniqueId(), getType()))
+                    StaffChat.getInstance().toggleTable.put(staff.getUniqueId(), getType(), true);
                 if (StaffChat.getInstance().toggleTable.get(staff.getUniqueId(), getType())) {
                     String sendMessage = ChatColor.translateAlternateColorCodes('&', header) +
                             (isPapi ? placeholder : player.getName())
@@ -73,17 +75,15 @@ public interface StaffChatType {
     }
 
     // Discord send webhook.
-    static void SendWebhook(String name, String message) {
-        if (!StaffChat.getInstance().config.getBoolean("discordwebhook.enabled")) return;
-        DiscordWebhook discordWebhook = new DiscordWebhook(StaffChat.getInstance().config.getString("discordwebhook.webhook"));
-        discordWebhook.setUsername(StaffChat.getInstance().config.getString("discordwebhook.webhookusername"));
-        discordWebhook.addEmbed(new DiscordWebhook.EmbedObject().setDescription(name + ": " + message).setColor(Color.RED).setFooter(StaffChat.getInstance().config.getString("discordwebhook.footer"), StaffChat.getInstance().config.getString("discordwebhook.footericon")));
+    static void sendWebhook(String name, String message) {
+        if (!StaffChat.getInstance().getConfig().getBoolean("discordwebhook.enabled")) return;
+        DiscordWebhook discordWebhook = new DiscordWebhook(StaffChat.getInstance().getConfig().getString("discordwebhook.webhook"));
+        discordWebhook.setUsername(StaffChat.getInstance().getConfig().getString("discordwebhook.webhookusername"));
+        discordWebhook.addEmbed(new DiscordWebhook.EmbedObject().setDescription(name + ": " + message).setColor(Color.RED).setFooter(StaffChat.getInstance().getConfig().getString("discordwebhook.footer"), StaffChat.getInstance().getConfig().getString("discordwebhook.footericon")));
         try {
             discordWebhook.execute();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }
-

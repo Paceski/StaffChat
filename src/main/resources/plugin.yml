@@ -13,6 +13,10 @@ commands:
     description: Toggle messages from staff chat.
     aliases:
       - staffchattoggle
+  sclock:
+    description: Toggle sending messages to staff chat.
+    aliases:
+      - staffchatlock
   screload:
     description: Reloads config.
   adminchat:
@@ -25,6 +29,10 @@ commands:
     description: Toggle messages from admin chat.
     aliases:
       - actoggle
+  adminchatlock:
+    description: Toggle sending messages to admin chat.
+    aliases:
+      - aclock
   schelp:
     description: Shows all staff chat commands.
     aliases:
@@ -35,7 +43,12 @@ commands:
       - developerchat
       - dc
   devchattoggle:
-    description: Toggle messages from Developer chat.
+    description: Toggle messages from developer chat.
     aliases:
       - developerchattoggle
       - dctoggle
+  devchatlock:
+    description: Toggle sending messages to developer chat.
+    aliases:
+      - developerchatlock
+      - dclock

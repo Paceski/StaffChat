@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.ServicePriority;
+
 import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
@@ -18,11 +19,7 @@ import java.lang.reflect.Method;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
-import java.util.concurrent.Callable;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 import java.util.logging.Level;
 import java.util.zip.GZIPOutputStream;
 
@@ -722,5 +719,4 @@ public class Metrics {
             return data;
         }
     }
-
 }
