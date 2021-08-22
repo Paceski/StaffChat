@@ -18,6 +18,11 @@ public class StaffChatImpl implements StaffChatType {
     }
 
     @Override
+    public String getLockCommand() {
+        return "sclock";
+    }
+
+    @Override
     public String getPrefix() {
         return "staffchat";
     }

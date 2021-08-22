@@ -7,6 +7,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by Pace
@@ -16,7 +17,7 @@ import org.bukkit.entity.Player;
 public class StaffChatReload implements CommandExecutor {
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (sender instanceof ConsoleCommandSender) {
             // Be able to do /screload from console too.
             ConsoleCommandSender console = (ConsoleCommandSender) sender;

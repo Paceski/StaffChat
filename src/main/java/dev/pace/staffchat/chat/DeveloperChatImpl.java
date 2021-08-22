@@ -18,6 +18,11 @@ public class DeveloperChatImpl implements StaffChatType {
     }
 
     @Override
+    public String getLockCommand() {
+        return "devchatlock";
+    }
+
+    @Override
     public String getPrefix() {
         return "developerchat";
     }
