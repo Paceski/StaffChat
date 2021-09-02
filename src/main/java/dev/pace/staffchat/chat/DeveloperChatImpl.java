@@ -19,7 +19,7 @@ public class DeveloperChatImpl implements StaffChatType {
 
     @Override
     public String getLockCommand() {
-        return "devchatlock";
+        return "devchatdisable";
     }
 
     @Override

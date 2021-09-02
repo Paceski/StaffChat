@@ -7,13 +7,19 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
+/**
+ * Created by Pace
+ * No part of this publication may be reproduced, disturbed, or transmitted in any form or any means.
+ */
+
 public class ChatListener implements Listener {
+
     @EventHandler
     public void onChatMessage(AsyncPlayerChatEvent event) {
         final Player player = event.getPlayer();
-        for(StaffChatType channel : StaffChat.getInstance().getChannels()) {
-            if(StaffChat.getInstance().lockMap.get(player.getUniqueId()).equals(channel.getType())) {
-                if(player.hasPermission(channel.getPermission())) {
+        for (StaffChatType channel : StaffChat.getInstance().getChannels()) {
+            if (StaffChat.getInstance().lockMap.get(player.getUniqueId()).equals(channel.getType())) {
+                if (player.hasPermission(channel.getPermission())) {
                     channel.sendChatMessage(player, event.getMessage());
                     event.setCancelled(true);
                     return;

@@ -5,28 +5,28 @@
 # DiscordWebhook is in beta and there are some issues, plugin developer is working on fixing them one by one.
 staffchat:
   error: "&cYou are not allowed to execute this command. Contact a server administrator if you believe this is an error."
-  toggle-on: "&3You have toggled staff chat &aon&3!"
-  toggle-off: "&3You have toggled staff chat &coff&3!"
-  lock-on: "&3You will now send messages in &eStaffChat&3!"
-  lock-off: "&3You will no longer send messages in &eStaffChat&3!"
+  disable-off: "&3You enabled Staff Chat!"
+  disable-on: "&3You disabled Staff Chat"
+  toggle-on: "&3You will now send messages in &eStaffChat&3!"
+  toggle-off: "&3You will no longer send messages in &eStaffChat&3!"
   header: "&8[&eStaffChat&8]&f "
   placeholder:
     name: "%placeholderyouwant%"
 adminchat:
   error: "&cYou are not allowed to execute this command. Contact a server administrator if you believe this is an error."
-  toggle-on: "&3You have toggled admin chat &aon&3!"
-  toggle-off: "&3You have toggled admin chat &coff&3!"
-  lock-on: "&3You will now send messages in &cAdminChat&3!"
-  lock-off: "&3You will no longer send messages in &cAdminChat&3!"
+  disable-off: "&3You enabled Admin Chat!"
+  disable-on: "&3You disabled Admin Chat"
+  toggle-on: "&3You will now send messages in &cAdminChat&3!"
+  toggle-off: "&3You will no longer send messages in &cAdminChat&3!"
   header: "&8[&cAdminChat&8]&f "
   placeholder:
     name: "%placeholderyouwant"
 developerchat:
   error: "&cYou are not allowed to execute this command. Contact a server administrator if you believe this is an error."
-  toggle-on: "&3You have toggled developer chat &aon&3!"
-  toggle-off: "&3You have toggled developer chat &coff&3!"
-  lock-on: "&3You will now send messages in &eDeveloperChat&3!"
-  lock-off: "&3You will no longer send messages in &eDeveloperChat&3!"
+  disable-off: "&3You enabled Developer Chat!"
+  disable-on: "&3You disabled Developer Chat"
+  toggle-on: "&3You will now send messages in &eDeveloperChat&3!"
+  toggle-off: "&3You will no longer send messages in &eDeveloperChat&3!"
   header: "&8[&eDeveloperChat&8]&f "
   placeholder:
     name: "%placeholderyouwant%"

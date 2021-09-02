@@ -19,7 +19,7 @@ public class StaffChatImpl implements StaffChatType {
 
     @Override
     public String getLockCommand() {
-        return "sclock";
+        return "scdisable";
     }
 
     @Override

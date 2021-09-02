@@ -9,6 +9,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Created by Pace
+ * No part of this publication may be reproduced, disturbed, or transmitted in any form or any means.
+ */
+
 public class StaffChatLockExecutor implements CommandExecutor {
 
     private final StaffChatType chatType;
@@ -31,15 +36,15 @@ public class StaffChatLockExecutor implements CommandExecutor {
             return true;
         }
 
-        if (!staffChat.lockMap.containsKey(player.getUniqueId())) {
-            staffChat.lockMap.put(player.getUniqueId(), "public");
+        if (!staffChat.toggleTable.contains(player.getUniqueId(), chatType.getType())) {
+            staffChat.toggleTable.put(player.getUniqueId(), chatType.getType(), true);
         }
 
-        // If using the same chat lock command twice, switch to public chat. Otherwise lock to new chat type.
-        final boolean isChannel = staffChat.lockMap.get(player.getUniqueId()).equals(chatType.getType());
-        StaffChat.getInstance().lockMap.put(player.getUniqueId(), isChannel ? "public" : chatType.getType());
+        final boolean isEnabled = StaffChat.getInstance().toggleTable.get(player.getUniqueId(), chatType.getType());
 
-        player.sendMessage(ChatColor.translateAlternateColorCodes('&', staffChat.getConfig().getString(chatType.getPrefix() + ".lock-" + (!isChannel ? "on" : "off"))));
+        StaffChat.getInstance().toggleTable.put(player.getUniqueId(), chatType.getType(), !isEnabled); // if it was disabled, this is true,
+        player.sendMessage(ChatColor.translateAlternateColorCodes('&', staffChat.getConfig().getString(chatType.getPrefix() + ".disable-" + (!isEnabled ? "on" : "off"))));
+
         return true;
     }
 }

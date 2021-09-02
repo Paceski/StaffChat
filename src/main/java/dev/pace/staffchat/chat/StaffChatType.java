@@ -45,7 +45,7 @@ public interface StaffChatType {
         }
 
         if (!StaffChat.getInstance().isChatEnabled(player, this)) {
-            player.sendMessage("§7Do /" + getType() + "chattoggle to talk in " + getType() + " chat!");
+            player.sendMessage("§7Do /" + getType() + "chatdisable to talk in " + getType() + " chat!");
             return true;
         }
 

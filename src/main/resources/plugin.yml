@@ -1,6 +1,6 @@
 name: StaffChat
 main: dev.pace.staffchat.StaffChat
-version: 2.4
+version: 2.5
 author: Pace
 api-version: 1.13
 softdepend: [PlaceholderAPI]
@@ -13,10 +13,10 @@ commands:
     description: Toggle messages from staff chat.
     aliases:
       - staffchattoggle
-  sclock:
+  scdisable:
     description: Toggle sending messages to staff chat.
     aliases:
-      - staffchatlock
+      - staffchatdisable
   screload:
     description: Reloads config.
   adminchat:
@@ -29,10 +29,10 @@ commands:
     description: Toggle messages from admin chat.
     aliases:
       - actoggle
-  adminchatlock:
+  adminchatdisable:
     description: Toggle sending messages to admin chat.
     aliases:
-      - aclock
+      - acdisable
   schelp:
     description: Shows all staff chat commands.
     aliases:
@@ -47,8 +47,8 @@ commands:
     aliases:
       - developerchattoggle
       - dctoggle
-  devchatlock:
+  devchatdisable:
     description: Toggle sending messages to developer chat.
     aliases:
-      - developerchatlock
-      - dclock
+      - developerchatdisable
+      - dcdisable
