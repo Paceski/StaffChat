@@ -117,10 +117,6 @@ public final class StaffChat extends JavaPlugin {
         return StaffChat.getInstance().toggleTable.get(player.getUniqueId(), type.getType());
     }
 
-    @Override
-    public void onDisable() {
-    }
-
     public AtomicBoolean getPapiEnabled() {
         return papiEnabled;
     }
