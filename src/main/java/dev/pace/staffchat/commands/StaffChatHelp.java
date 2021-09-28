@@ -38,7 +38,7 @@ public class StaffChatHelp implements CommandExecutor {
             p.sendMessage(cc("&e/devchatdisable - &fEnable or Disable Developer Chat."));
             p.sendMessage(cc("&e/adminchat <message> - &fTalk in admin chat."));
             p.sendMessage(cc("&e/adminchattoggle - &fSend messages without the command."));
-            p.sendMessage(cc("&e/admindisable - &fEnable or Disable Admin Chat."));
+            p.sendMessage(cc("&e/adminchatdisable - &fEnable or Disable Admin Chat."));
             p.sendMessage(cc("&e/screload - &fReloads plugin configuration."));
             p.sendMessage(cc("&e/schelp - &fView all this plugin's useful commands."));
             return true;

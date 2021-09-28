@@ -34,11 +34,9 @@ public final class StaffChat extends JavaPlugin {
 
     public static StaffChat instance;
     public FileConfiguration config;
-
     public Table<UUID, String, Boolean> toggleTable = HashBasedTable.create();
     public HashMap<UUID, String> lockMap = new HashMap<>();
     public AtomicBoolean papiEnabled = new AtomicBoolean(false);
-
     public ArrayList<StaffChatType> channels = new ArrayList<>();
 
     public static StaffChat getInstance() {
@@ -69,7 +67,6 @@ public final class StaffChat extends JavaPlugin {
         channels.add(new AdminChatImpl());
         channels.add(new DeveloperChatImpl());
         channels.add(new StaffChatImpl());
-
         final Logger logger = this.getLogger();
 
         new Metrics(this, 11633);
