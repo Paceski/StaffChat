@@ -49,7 +49,7 @@ public interface StaffChatType {
             return true;
         }
 
-        final boolean isPapi = dev.pace.staffchat.StaffChat.getInstance().getPapiEnabled().get();
+        final boolean isPapi = StaffChat.getInstance().getPapiEnabled().get();
         final String header = StaffChat.getInstance().getConfig().getString(getPrefix() + ".header");
         final String placeholder = StaffChat.getInstance().getConfig().getString(getPrefix() + ".placeholder.name");
 

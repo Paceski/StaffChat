@@ -44,7 +44,6 @@ public class StaffChatLockExecutor implements CommandExecutor {
 
         StaffChat.getInstance().toggleTable.put(player.getUniqueId(), chatType.getType(), !isEnabled); // if it was disabled, this is true,
         player.sendMessage(ChatColor.translateAlternateColorCodes('&', staffChat.getConfig().getString(chatType.getPrefix() + ".disable-" + (!isEnabled ? "on" : "off"))));
-
         return true;
     }
 }
