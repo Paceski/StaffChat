@@ -1,6 +1,5 @@
 [![](https://discord.com/api/guilds/805168792250220544/widget.png)](https://discord.gg/wpHCbqJRmM "Discord")
 [![](https://img.shields.io/github/release/DiscordSRV/DiscordSRV.svg)](https://www.spigotmc.org/resources/1-7-1-17-staff-chat.92585/history "Latest release")
-[![](https://img.shields.io/github/contributors/DiscordSRV/DiscordSRV.svg)](https://github.com/Pace1337/StaffChat/graphs/contributors "GitHub contributors")
 [![](https://img.shields.io/github/license/DiscordSRV/DiscordSRV.svg)](https://github.com/Pace1337/StaffChat/blob/master/LICENSE "License")
 
 [![](https://bstats.org/signatures/bukkit/staff%20Chat.svg)](https://bstats.org/signatures/bukkit/staff%20Chat.svg "StaffChat on bStats")
