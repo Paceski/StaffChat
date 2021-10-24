@@ -19,10 +19,3 @@
     </tr>
 </table>
 
-Permissions:
-staff.staffchat - Access to staff chat.
-staff.adminchat - Access to admin chat.
-staff.developerchat- Access to developer chat.
-staff.reload - Access to /screload.
-If you want access to all commands without permissions, give your self op.
-
