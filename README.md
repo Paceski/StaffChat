@@ -3,7 +3,7 @@
 [![](https://img.shields.io/github/contributors/DiscordSRV/DiscordSRV.svg)](https://github.com/Pace1337/StaffChat/graphs/contributors "GitHub contributors")
 [![](https://img.shields.io/github/license/DiscordSRV/DiscordSRV.svg)](https://github.com/Pace1337/StaffChat/blob/master/LICENSE "License")
 
-[![](https://bstats.org/signatures/bukkit/DiscordSRV.svg)](https://bstats.org/signatures/bukkit/staff%20Chat.svg "StaffChat on bStats")
+[![](https://bstats.org/signatures/bukkit/staff%20Chat.svg)](https://bstats.org/signatures/bukkit/staff%20Chat.svg "StaffChat on bStats")
 
 ## Thanks to:
 <table>
