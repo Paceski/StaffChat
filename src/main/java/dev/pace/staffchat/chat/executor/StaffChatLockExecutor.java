@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by Pace
- * No part of this publication may be reproduced, disturbed, or transmitted in any form or any means.
+ * https://www.spigotmc.org/resources/1-7-1-17-staff-chat.92585/
  */
 
 public class StaffChatLockExecutor implements CommandExecutor {
@@ -39,9 +39,7 @@ public class StaffChatLockExecutor implements CommandExecutor {
         if (!staffChat.toggleTable.contains(player.getUniqueId(), chatType.getType())) {
             staffChat.toggleTable.put(player.getUniqueId(), chatType.getType(), true);
         }
-
         final boolean isEnabled = StaffChat.getInstance().toggleTable.get(player.getUniqueId(), chatType.getType());
-
         StaffChat.getInstance().toggleTable.put(player.getUniqueId(), chatType.getType(), !isEnabled); // if it was disabled, this is true,
         player.sendMessage(ChatColor.translateAlternateColorCodes('&', staffChat.getConfig().getString(chatType.getPrefix() + ".disable-" + (!isEnabled ? "on" : "off"))));
         return true;

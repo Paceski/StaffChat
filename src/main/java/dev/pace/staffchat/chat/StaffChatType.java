@@ -12,7 +12,7 @@ import java.io.IOException;
 
 /**
  * Created by Pace
- * No part of this publication may be reproduced, disturbed, or transmitted in any form or any means.
+ * https://www.spigotmc.org/resources/1-7-1-17-staff-chat.92585/
  */
 
 public interface StaffChatType {
@@ -75,7 +75,7 @@ public interface StaffChatType {
     }
 
     // Discord send webhook.
-    static void sendWebhook(String name, String message) {
+     static void sendWebhook(String name, String message) {
         if (!StaffChat.getInstance().getConfig().getBoolean("discordwebhook.enabled")) return;
         DiscordWebhook discordWebhook = new DiscordWebhook(StaffChat.getInstance().getConfig().getString("discordwebhook.webhook"));
         discordWebhook.setUsername(StaffChat.getInstance().getConfig().getString("discordwebhook.webhookusername"));

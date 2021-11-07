@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by Pace
- * No part of this publication may be reproduced, disturbed, or transmitted in any form or any means.
+ * https://www.spigotmc.org/resources/1-7-1-17-staff-chat.92585/
  */
 
 public class StaffChatToggleExecutor implements CommandExecutor {
@@ -43,7 +43,6 @@ public class StaffChatToggleExecutor implements CommandExecutor {
         // If using the same chat lock command twice, switch to public chat. Otherwise lock to new chat type.
         final boolean isChannel = staffChat.lockMap.get(player.getUniqueId()).equals(chatType.getType());
         StaffChat.getInstance().lockMap.put(player.getUniqueId(), isChannel ? "public" : chatType.getType());
-
         player.sendMessage(ChatColor.translateAlternateColorCodes('&', staffChat.getConfig().getString(chatType.getPrefix() + ".toggle-" + (!isChannel ? "on" : "off"))));
         return true;
     }

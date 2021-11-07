@@ -2,7 +2,7 @@ package dev.pace.staffchat.chat;
 
 /**
  * Created by Pace
- * No part of this publication may be reproduced, disturbed, or transmitted in any form or any means.
+ * https://www.spigotmc.org/resources/1-7-1-17-staff-chat.92585/
  */
 
 public class StaffChatImpl implements StaffChatType {

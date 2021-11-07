@@ -27,7 +27,7 @@ import java.util.logging.Logger;
 
 /**
  * Created by Pace
- * No part of this publication may be reproduced, disturbed, or transmitted in any form or any means.
+ * https://www.spigotmc.org/resources/1-7-1-17-staff-chat.92585/
  */
 
 public final class StaffChat extends JavaPlugin {
@@ -61,7 +61,7 @@ public final class StaffChat extends JavaPlugin {
         config.addDefault("staffchat-enabled", true);
         config.addDefault("developerchat-enabled", true);
         config.addDefault("adminchat-enabled", true);
-        config.addDefault("update-checker", false);
+        config.addDefault("update-checker", true); // Update checker is now enabled by default.
         this.saveConfig();
 
         channels.add(new AdminChatImpl());
@@ -102,7 +102,7 @@ public final class StaffChat extends JavaPlugin {
             if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
                 logger.info("No update found for Staff Chat.");
             } else {
-                logger.info("There is a new update available for Staff Chat. Download it here: https://www.spigotmc.org/resources/staff-chat.92585/");
+                logger.info("There is a new update available for Staff Chat. Download it here: https://www.spigotmc.org/resources/1-7-1-17-staff-chat.92585/");
             }
         });
     }

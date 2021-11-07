@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by Pace
- * No part of this publication may be reproduced, disturbed, or transmitted in any form or any means.
+ * https://www.spigotmc.org/resources/1-7-1-17-staff-chat.92585/
  */
 
 public class StaffChatReload implements CommandExecutor {
@@ -26,7 +26,7 @@ public class StaffChatReload implements CommandExecutor {
             return true;
         }
         Player p = (Player) sender;
-        if (!p.hasPermission("staff.reload") || !p.isOp()) {
+        if (!p.hasPermission("staff.reload")) {
             p.sendMessage(ChatColor.RED + "You are not allowed to execute this command. Contact a server administrator if you believe this is an error.");
             return true;
         }
