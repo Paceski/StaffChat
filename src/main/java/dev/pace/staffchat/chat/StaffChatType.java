@@ -18,15 +18,10 @@ import java.io.IOException;
 public interface StaffChatType {
 
     String getCommand();
-
     String getToggleCommand();
-
     String getLockCommand();
-
     String getPrefix();
-
     String getPermission();
-
     String getType();
 
     default boolean sendChatMessage(final Player player, final String message) {
