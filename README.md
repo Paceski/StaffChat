@@ -1,5 +1,5 @@
 [![](https://discord.com/api/guilds/805168792250220544/widget.png)](https://discord.gg/wpHCbqJRmM "Discord")
-
+[![Lines Of Code](https://tokei.rs/b1/github/Pace1337/StaffChat?category=code)](https://github.com/Pace1337/StaffChat)
 [![](https://bstats.org/signatures/bukkit/staff%20Chat.svg)](https://bstats.org/signatures/bukkit/staff%20Chat.svg "StaffChat on bStats")
 
 ## Thanks to:
