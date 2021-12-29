@@ -37,3 +37,5 @@ discordwebhook:
   webhookusername: "StaffChat Logs"
   footer: "New Staff Chat message"
   footericon: "https://i.imgur.com/frdEAle.png"
+
+CONFIG_VERSION: 1 # DO NOT EDIT THIS.
