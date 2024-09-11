@@ -1,8 +1,9 @@
 name: StaffChat
 main: dev.pace.staffchat.StaffChat
-version: 3.5
+version: 3.6
 author: Pace
 api-version: 1.13
+folia-supported: true
 softdepend: [PlaceholderAPI]
 commands:
   staffchat:
