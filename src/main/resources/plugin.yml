@@ -1,6 +1,6 @@
 name: StaffChat
 main: dev.pace.staffchat.StaffChat
-version: 3.6
+version: 3.7
 author: Pace
 api-version: 1.13
 folia-supported: true
