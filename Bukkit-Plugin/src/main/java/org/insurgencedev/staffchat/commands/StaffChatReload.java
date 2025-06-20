@@ -1,0 +1,42 @@
+package org.insurgencedev.staffchat.commands;
+
+import org.insurgencedev.staffchat.StaffChat;
+import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
+
+/**
+ * Created by Pace
+ * https://www.spigotmc.org/resources/1-7-1-17-staff-chat.92585/
+ */
+
+public class StaffChatReload implements CommandExecutor {
+
+    @Override
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+        if (sender instanceof ConsoleCommandSender) {
+            // Be able to do /screload from  console too.
+            ConsoleCommandSender console = (ConsoleCommandSender) sender;
+            StaffChat.getInstance().onReloadableStart();
+            StaffChat.getInstance().onPluginReload();
+            console.sendMessage(ChatColor.GREEN + "Config has been reloaded!");
+            return true;
+        }
+        Player p = (Player) sender;
+        if (!p.hasPermission("staff.reload")) {
+            p.sendMessage(ChatColor.RED + "You are not allowed to execute this command. Contact a server administrator if you believe this is an error.");
+            return true;
+        }
+        try {
+            StaffChat.getInstance().onPluginReload();
+            sender.sendMessage(ChatColor.GREEN + "Config has been reloaded!");
+        } catch (NullPointerException e) {
+            sender.sendMessage(ChatColor.DARK_RED + "Error! Check console for more details. Having issues? Ask for support from plugin developer.");
+        }
+        return true;
+    }
+}

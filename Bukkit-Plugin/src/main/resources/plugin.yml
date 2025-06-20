@@ -1,0 +1,56 @@
+name: @pluginName
+version: @pluginVersion
+main: @pluginMain
+author: @author
+website: @website
+api-version: 1.13
+folia-supported: true
+softdepend: [PlaceholderAPI]
+commands:
+  staffchat:
+    description: Staff chat command.
+    aliases:
+      - sc
+  sctoggle:
+    description: Toggle messages from staff chat.
+    aliases:
+      - staffchattoggle
+  scdisable:
+    description: Toggle sending messages to staff chat.
+    aliases:
+      - staffchatdisable
+  screload:
+    description: Reloads config.
+  adminchat:
+    description: Admin chat command.
+    aliases:
+      - asc
+      - adminstaffchat
+      - ac
+  adminchattoggle:
+    description: Toggle messages from admin chat.
+    aliases:
+      - actoggle
+  adminchatdisable:
+    description: Toggle sending messages to admin chat.
+    aliases:
+      - acdisable
+  schelp:
+    description: Shows all staff chat commands.
+    aliases:
+      - staffchathelp
+  devchat:
+    description: Developer chat command.
+    aliases:
+      - developerchat
+      - dc
+  devchattoggle:
+    description: Toggle messages from developer chat.
+    aliases:
+      - developerchattoggle
+      - dctoggle
+  devchatdisable:
+    description: Toggle sending messages to developer chat.
+    aliases:
+      - developerchatdisable
+      - dcdisable

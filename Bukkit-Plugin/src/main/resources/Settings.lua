@@ -1,0 +1,2 @@
+miniMessage1 = "<red>This is a <bold>test</bold> message with <green>MiniMessage</green> formatting.</red>"
+miniMessage2 = "<red>This is a <bold>test</bold> message with</red> &aMiniMessage &rand &blegacy &cformatting. This is hex color: #f20505Red"
